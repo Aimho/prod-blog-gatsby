@@ -1,8 +1,7 @@
 import React from 'react';
-import { Link, navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import { Card, CardContent, Typography } from '@material-ui/core';
 
-import Image from '../components/image';
 import SEO from '../components/seo';
 import Layout from '../components/Layout';
 import Profile from '../components/Profile';
@@ -14,7 +13,7 @@ const IndexPage: React.FC = () => {
 
     return (
         <Layout isLoading={!isData}>
-            <SEO title="AimHo Blog" />
+            <SEO title="AimHo | Home" />
 
             <Profile />
 
