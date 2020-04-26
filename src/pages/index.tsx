@@ -1,35 +1,86 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import { Card, CardContent, Typography } from '@material-ui/core';
+import { Typography, Container } from '@material-ui/core';
+import { ChevronRight } from '@material-ui/icons';
 
 import SEO from '../components/seo';
 import Layout from '../components/Layout';
-import Profile from '../components/Profile';
 import LatestPostListQuery from '../query/LatestPostListQuery';
+import StyledIndexHeader from '../assets/style/IndexHeader';
+import StyledIndexContent from '../assets/style/IndexContent';
 
 const IndexPage: React.FC = () => {
     const data = LatestPostListQuery();
     const isData = data && data.length > 0;
 
+    const IndexHeader = () => {
+        if (!isData) return null;
+        const fields = data[0].node.fields;
+        const frontmatter = data[0].node.frontmatter;
+
+        return (
+            <div className="card">
+                <div className="title">
+                    <Typography variant="h2">{frontmatter.title}</Typography>
+                </div>
+                <div className="date">
+                    <Typography variant="caption">{frontmatter.createdAt}</Typography>
+                </div>
+                <div className="desc" onClick={() => navigate(`/${fields.slug}`)}>
+                    <Typography variant="caption" component="p">
+                        {frontmatter.description}
+                    </Typography>
+                </div>
+                <div className="more" onClick={() => navigate(`/${fields.slug}`)}>
+                    <Typography variant="caption" component="p">
+                        자세히보기
+                    </Typography>
+                    <ChevronRight fontSize="small" />
+                </div>
+            </div>
+        );
+    };
+
     return (
         <Layout isLoading={!isData}>
-            <SEO title="AimHo | Home" />
+            <StyledIndexHeader>
+                <Container maxWidth="md">{IndexHeader()}</Container>
+            </StyledIndexHeader>
 
-            <Profile />
+            <StyledIndexContent>
+                <Container maxWidth="md">
+                    <SEO title="AimHo | Home" />
 
-            {isData &&
-                data.map(d => {
-                    const frontmatter = d.node.frontmatter;
-                    const id = d.node.id;
-                    return (
-                        <Card key={id} onClick={() => navigate(`/${frontmatter.path}`)}>
-                            <CardContent>
-                                <Typography variant="h4">{frontmatter.title}</Typography>
-                                <Typography variant="body1">{frontmatter.createdAt}</Typography>
-                            </CardContent>
-                        </Card>
-                    );
-                })}
+                    {isData &&
+                        data.map(d => {
+                            const id = d.node.id;
+                            const fields = d.node.fields;
+                            const frontmatter = d.node.frontmatter;
+
+                            return (
+                                <div className="card" key={id}>
+                                    <div className="date">
+                                        <Typography variant="caption">{frontmatter.createdAt}</Typography>
+                                    </div>
+                                    <div className="title">
+                                        <Typography variant="h4">{frontmatter.title}</Typography>
+                                    </div>
+                                    <div className="desc" onClick={() => navigate(`/${fields.slug}`)}>
+                                        <Typography variant="caption" component="p">
+                                            {frontmatter.description}
+                                        </Typography>
+                                    </div>
+                                    <div className="more" onClick={() => navigate(`/${fields.slug}`)}>
+                                        <Typography variant="caption" component="p">
+                                            자세히보기
+                                        </Typography>
+                                        <ChevronRight fontSize="small" />
+                                    </div>
+                                </div>
+                            );
+                        })}
+                </Container>
+            </StyledIndexContent>
         </Layout>
     );
 };

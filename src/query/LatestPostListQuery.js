@@ -3,15 +3,18 @@ import { useStaticQuery, graphql } from 'gatsby';
 function LatestPostListQuery() {
     const data = useStaticQuery(graphql`
         query LatestPostListQuery {
-            allMarkdownRemark(sort: { order: DESC, fields: frontmatter___createdAt }) {
+            allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___createdAt] }, limit: 10) {
                 edges {
                     node {
+                        id
                         frontmatter {
-                            path
-                            createdAt(formatString: "YYYY-MM-DD. HH:mm")
+                            createdAt(formatString: "YYYY년 M월 D일")
+                            description
                             title
                         }
-                        id
+                        fields {
+                            slug
+                        }
                     }
                 }
             }

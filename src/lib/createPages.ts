@@ -10,9 +10,11 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
                     node {
                         html
                         frontmatter {
-                            path
-                            createdAt(formatString: "YYYY-MM-DD. HH:mm")
+                            createdAt(formatString: "YYYY-MM-DD")
                             title
+                        }
+                        fields {
+                            slug
                         }
                     }
                 }
@@ -26,7 +28,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
 
     data.allMarkdownRemark.edges.forEach(({ node }) => {
         createPage({
-            path: node.frontmatter.path,
+            path: node.fields.slug,
             context: {
                 html: node.html,
                 createdAt: node.frontmatter.createdAt,

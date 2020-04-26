@@ -23,7 +23,7 @@ module.exports = {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 start_url: `/`,
-                icon: `src/assets/gatsby-icon.png`, // This path is relative to the root of the site.
+                icon: `src/assets/img/gatsby-icon.png`, // This path is relative to the root of the site.
             },
         },
         `gatsby-plugin-typescript`, // 추가!
@@ -31,6 +31,7 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         `gatsby-transformer-remark`,
+        `gatsby-plugin-styled-components`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,

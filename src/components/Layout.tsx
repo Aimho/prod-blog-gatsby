@@ -4,11 +4,10 @@
 import React from 'react';
 
 import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { Backdrop, CircularProgress, Container } from '@material-ui/core';
+import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import Header from './Header';
-import SiteMetaDataQuery from '../query/SiteMetaDataQuery';
-import '../assets/normalize.css';
+import '../assets/style/normalize.css';
 
 interface Props {
     isLoading?: boolean;
@@ -17,7 +16,7 @@ interface Props {
 const theme = createMuiTheme({
     palette: {
         text: { primary: '#27251F' },
-        primary: { main: '#00704A' },
+        primary: { main: '#000' },
     },
     typography: {
         h4: {
@@ -29,12 +28,10 @@ const theme = createMuiTheme({
 const useStyles = makeStyles(theme => ({
     backdrop: {
         zIndex: theme.zIndex.drawer + 1,
-        color: '#00704A',
     },
 }));
 
 const Layout: React.FC<Props> = props => {
-    const data = SiteMetaDataQuery();
     const classes = useStyles();
 
     const Loading = (
@@ -45,18 +42,11 @@ const Layout: React.FC<Props> = props => {
 
     return (
         <ThemeProvider theme={theme}>
-            <Header siteTitle={data.site.siteMetadata.title} />
-            <Container maxWidth="md">
-                <main style={{ margin: '80px 0px' }}>{props.children}</main>
+            <Header />
 
-                <footer>
-                    © {new Date().getFullYear()}, Built with
-                    {` `}
-                    <a href="https://www.gatsbyjs.org">Gatsby</a>
-                </footer>
+            <main style={{ marginBottom: '80px' }}>{props.children}</main>
 
-                {Loading}
-            </Container>
+            {Loading}
         </ThemeProvider>
     );
 };
