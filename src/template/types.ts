@@ -8,7 +8,9 @@ export type ITemplateProps<T> = ReplaceComponentRendererArgs['props'] & {
 
 export type IPostTemplateProps = ITemplateProps<{
     html: string;
+    createdAt: string;
     title: string;
+    description: string;
 }>;
 
 export type TLatestPostListQueryFilter = {

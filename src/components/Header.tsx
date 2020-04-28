@@ -1,6 +1,8 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 import { GitHub, Facebook } from '@material-ui/icons';
 import { Fab, Container, Grid } from '@material-ui/core';
+
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
@@ -8,6 +10,7 @@ const StyledHeader = styled.header`
     background-color: #000;
     img {
         height: 20px;
+        cursor: pointer;
     }
 `;
 
@@ -15,7 +18,7 @@ const Header: React.FC = () => (
     <StyledHeader>
         <Container maxWidth="md">
             <Grid container justify="space-between" alignItems="center">
-                <img src={require('../assets/img/logo.png')} alt="AimHo Blog" />
+                <img src={require('../assets/img/logo.png')} alt="AimHo Blog" onClick={() => navigate('/')} />
                 <div>
                     <Fab
                         size="small"

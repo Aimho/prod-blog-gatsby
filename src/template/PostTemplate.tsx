@@ -1,17 +1,26 @@
 import React from 'react';
-import { Container } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 
+import { IPostTemplateProps } from './types';
 import Layout from '../components/Layout';
 import Utterances from '../components/Utterances';
-import { IPostTemplateProps } from './types';
 
 const PostTemplate: React.FC<IPostTemplateProps> = React.memo(props => {
-    const { title, html } = props.pageContext;
+    const { createdAt, title, description, html } = props.pageContext;
+
     return (
         <Layout>
-            <Container maxWidth="md">
-                <h2>{title}</h2>
-                {/* <h4>{date}</h4> */}
+            <Container maxWidth="md" style={{ paddingTop: '60px' }}>
+                <Typography variant="caption" style={{ color: '#2085FF', marginBottom: '14px' }} component="p">
+                    {createdAt}
+                </Typography>
+                <Typography variant="h4" style={{ fontWeight: 600, marginBottom: '10px' }}>
+                    {title}
+                </Typography>
+                <Typography variant="body1" style={{ color: '#878787' }}>
+                    {description}
+                </Typography>
+
                 <hr />
                 <div dangerouslySetInnerHTML={{ __html: html }} />
                 <Utterances repo="Aimho/prod-blog-utterances" />

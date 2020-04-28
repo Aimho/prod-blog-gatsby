@@ -15,8 +15,10 @@ const IndexPage: React.FC = () => {
 
     const IndexHeader = () => {
         if (!isData) return null;
+        console.log(data);
         const fields = data[0].node.fields;
         const frontmatter = data[0].node.frontmatter;
+        const rawMarkdownBody = data[0].node.rawMarkdownBody;
 
         return (
             <div className="card">
@@ -27,8 +29,8 @@ const IndexPage: React.FC = () => {
                     <Typography variant="caption">{frontmatter.createdAt}</Typography>
                 </div>
                 <div className="desc" onClick={() => navigate(`/${fields.slug}`)}>
-                    <Typography variant="caption" component="p">
-                        {frontmatter.description}
+                    <Typography variant="body2" component="p">
+                        {rawMarkdownBody}
                     </Typography>
                 </div>
                 <div className="more" onClick={() => navigate(`/${fields.slug}`)}>
@@ -56,6 +58,7 @@ const IndexPage: React.FC = () => {
                             const id = d.node.id;
                             const fields = d.node.fields;
                             const frontmatter = d.node.frontmatter;
+                            const rawMarkdownBody = d.node.rawMarkdownBody;
 
                             return (
                                 <div className="card" key={id}>
@@ -66,8 +69,8 @@ const IndexPage: React.FC = () => {
                                         <Typography variant="h4">{frontmatter.title}</Typography>
                                     </div>
                                     <div className="desc" onClick={() => navigate(`/${fields.slug}`)}>
-                                        <Typography variant="caption" component="p">
-                                            {frontmatter.description}
+                                        <Typography variant="body2" component="p">
+                                            {rawMarkdownBody}
                                         </Typography>
                                     </div>
                                     <div className="more" onClick={() => navigate(`/${fields.slug}`)}>

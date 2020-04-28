@@ -12,6 +12,7 @@ function LatestPostListQuery() {
                             description
                             title
                         }
+                        rawMarkdownBody
                         fields {
                             slug
                         }
