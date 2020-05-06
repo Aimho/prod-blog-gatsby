@@ -1,36 +1,82 @@
 module.exports = {
     siteMetadata: {
-        title: `Gatsby Default Starter`,
-        description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
-        author: `@gatsbyjs`,
+        title: `AimHo`,
+        description: `AimHo 블로그 입니다.`,
+        author: `@aimho`,
     },
     plugins: [
         {
             resolve: `gatsby-source-filesystem`,
             options: {
-                name: `assets`,
-                path: `${__dirname}/src/assets`,
+                name: `resources`,
+                path: `${__dirname}/src/resources`,
             },
         },
         {
             resolve: 'gatsby-source-filesystem',
             options: {
-                name: 'posts',
-                path: `${__dirname}/posts`,
+                name: 'contents',
+                path: `${__dirname}/src/contents`,
             },
         },
         {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 start_url: `/`,
-                icon: `src/assets/img/gatsby-icon.png`, // This path is relative to the root of the site.
+                icon: `src/resources/images/gatsby-icon.png`, // This path is relative to the root of the site.
             },
         },
-        `gatsby-plugin-typescript`, // 추가!
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [
+                    `gatsby-remark-relative-images`,
+                    {
+                        resolve: `gatsby-remark-images`,
+                        options: {
+                            maxWidth: 1024,
+                            linkImagesToOriginal: false,
+                            sizeByPixelDensity: true,
+                            showCaptions: true,
+                        },
+                    },
+                    {
+                        resolve: `gatsby-remark-prismjs`,
+                        options: {
+                            classPrefix: 'language-',
+                            inlineCodeMarker: null,
+                            aliases: {},
+                            showLineNumbers: false,
+                            noInlineHighlight: false,
+                            languageExtensions: [
+                                {
+                                    language: 'superscript',
+                                    extend: 'javascript',
+                                    definition: {
+                                        superscript_types: /(SuperType)/,
+                                    },
+                                    insertBefore: {
+                                        function: {
+                                            superscript_keywords: /(superif|superelse)/,
+                                        },
+                                    },
+                                },
+                            ],
+                            prompt: {
+                                user: 'root',
+                                host: 'localhost',
+                                global: false,
+                            },
+                            escapeEntities: {},
+                        },
+                    },
+                ],
+            },
+        },
+        `gatsby-plugin-typescript`,
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
-        `gatsby-transformer-remark`,
         `gatsby-plugin-styled-components`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline

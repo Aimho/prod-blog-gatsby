@@ -16,9 +16,9 @@ const StyledHeader = styled.header`
 
 const Header: React.FC = () => (
     <StyledHeader>
-        <Container maxWidth="md">
+        <Container maxWidth="lg">
             <Grid container justify="space-between" alignItems="center">
-                <img src={require('../assets/img/logo.png')} alt="AimHo Blog" onClick={() => navigate('/')} />
+                <img src={require('../resources/images/logo.png')} alt="AimHo Blog" onClick={() => navigate('/')} />
                 <div>
                     <Fab
                         size="small"

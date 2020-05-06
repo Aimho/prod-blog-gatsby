@@ -7,7 +7,7 @@ import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/sty
 import { Backdrop, CircularProgress } from '@material-ui/core';
 
 import Header from './Header';
-import '../assets/style/normalize.css';
+import '../resources/style/normalize.css';
 
 interface Props {
     isLoading?: boolean;

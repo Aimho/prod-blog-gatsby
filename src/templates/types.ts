@@ -10,7 +10,8 @@ export type IPostTemplateProps = ITemplateProps<{
     html: string;
     createdAt: string;
     title: string;
-    description: string;
+    subTitle: string;
+    tags: string[];
 }>;
 
 export type TLatestPostListQueryFilter = {

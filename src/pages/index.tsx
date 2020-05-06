@@ -3,11 +3,11 @@ import { navigate } from 'gatsby';
 import { Typography, Container } from '@material-ui/core';
 import { ChevronRight } from '@material-ui/icons';
 
-import SEO from '../components/seo';
+import SEO from '../components/Seo';
 import Layout from '../components/Layout';
 import LatestPostListQuery from '../query/LatestPostListQuery';
-import StyledIndexHeader from '../assets/style/IndexHeader';
-import StyledIndexContent from '../assets/style/IndexContent';
+import StyledIndexHeader from '../resources/style/IndexHeader';
+import StyledIndexContent from '../resources/style/IndexContent';
 
 const IndexPage: React.FC = () => {
     const data = LatestPostListQuery();
@@ -15,7 +15,7 @@ const IndexPage: React.FC = () => {
 
     const IndexHeader = () => {
         if (!isData) return null;
-        console.log(data);
+
         const fields = data[0].node.fields;
         const frontmatter = data[0].node.frontmatter;
         const rawMarkdownBody = data[0].node.rawMarkdownBody;

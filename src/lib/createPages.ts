@@ -12,7 +12,8 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
                         frontmatter {
                             createdAt(formatString: "YYYY년 M월 D일")
                             title
-                            description
+                            subTitle
+                            tags
                         }
                         fields {
                             slug
@@ -34,9 +35,10 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
                 html: node.html,
                 createdAt: node.frontmatter.createdAt,
                 title: node.frontmatter.title,
-                description: node.frontmatter.description,
+                subTitle: node.frontmatter.subTitle,
+                tags: node.frontmatter.tags,
             },
-            component: path.resolve(__dirname, '../template/PostTemplate.tsx'),
+            component: path.resolve(__dirname, '../templates/PostTemplate.tsx'),
         });
     });
 }
