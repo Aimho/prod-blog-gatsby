@@ -1,7 +1,9 @@
 import styled from 'styled-components';
+import setMobileCSS from '../../utils/setMobileCSS';
 
 const StyledIndexContent = styled.div`
     .card {
+        background-color: transparent;
         display: grid;
         grid-template-columns:
             [date-start] repeat(4, 1fr) [date-end title-start desc-start more-start] repeat(8, 1fr)
@@ -10,13 +12,21 @@ const StyledIndexContent = styled.div`
         grid-column-gap: 18px;
         grid-row-gap: 12px;
 
-        background-color: transparent;
+        ${setMobileCSS(`
+          grid-template-columns:
+              [title-start desc-start more-start] repeat(12, 1fr) [title-end desc-end more-end];
+          grid-template-rows: [title-start title-end] auto [desc-start desc-end] auto [more-start more-end];
+          grid-column-gap: 14px;
+          grid-row-gap: 8px;
+        `)}
 
         .title {
             grid-area: title;
+            ${setMobileCSS(`> h4 {font-size: 20px;}`)}
         }
         .date {
             grid-area: date;
+            ${setMobileCSS(`display: none;`)}
             span {
                 display: inline-block;
                 padding-top: 12px;
@@ -54,6 +64,10 @@ const StyledIndexContent = styled.div`
             display: flex;
             align-items: center;
             padding-top: 12px;
+            ${setMobileCSS(`
+              border-top: solid 1px #000;
+              justify-content: flex-end;
+            `)}
         }
 
         .desc,

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import setMobileCSS from '../../utils/setMobileCSS';
 
 const StyledIndexHeader = styled.div`
     padding-top: 128px;
@@ -6,7 +7,16 @@ const StyledIndexHeader = styled.div`
     margin-bottom: 100px;
     background-color: #000;
 
+    ${setMobileCSS(`
+      padding-top: 64px;
+      padding-bottom: 32px;
+      margin-bottom: 50px;
+    `)}
+
     .card {
+        background-color: transparent;
+        color: #fff;
+
         display: grid;
         grid-template-columns:
             [date-start title-start] repeat(6, 1fr) [title-end desc-start date-end more-start] repeat(6, 1fr)
@@ -15,14 +25,21 @@ const StyledIndexHeader = styled.div`
         grid-column-gap: 24px;
         grid-row-gap: 56px;
 
-        background-color: transparent;
-        color: #fff;
+        ${setMobileCSS(`
+          grid-template-columns:
+              [title-start desc-start more-start] repeat(12, 1fr) [title-end desc-end more-end];
+          grid-template-rows: [title-start title-end] auto [desc-start desc-end] auto [more-start more-end];
+          grid-column-gap: 16px;
+          grid-row-gap: 32px;
+        `)}
 
         .title {
             grid-area: title;
+            ${setMobileCSS(`> h3 {font-size: 28px;}`)}
         }
         .date {
             grid-area: date;
+            ${setMobileCSS(`display: none;`)}
             span {
                 display: inline-block;
                 padding-top: 12px;
@@ -61,6 +78,10 @@ const StyledIndexHeader = styled.div`
             align-items: center;
             padding-top: 12px;
             border-top: solid 1px #fff;
+            ${setMobileCSS(`
+              border-top: solid 1px #fff;
+              justify-content: flex-end;
+            `)}
         }
 
         .desc,

@@ -1,8 +1,11 @@
-import { useStaticQuery, graphql } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 
-function LatestPostListQuery() {
+/**
+ * 최신 순서대로 post를 불러옴
+ */
+export const QGetPosts = () => {
     const data = useStaticQuery(graphql`
-        query LatestPostListQuery {
+        query getPosts {
             allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___createdAt] }, limit: 10) {
                 edges {
                     node {
@@ -22,7 +25,7 @@ function LatestPostListQuery() {
         }
     `);
 
-    return data.allMarkdownRemark.edges;
-}
+    console.log(data);
 
-export default LatestPostListQuery;
+    return data.allMarkdownRemark.edges;
+};
