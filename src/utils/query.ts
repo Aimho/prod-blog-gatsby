@@ -1,12 +1,10 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-/**
- * 최신 순서대로 post를 불러옴
- */
-export const QGetPosts = () => {
-    const data = useStaticQuery(graphql`
-        query getPosts {
-            allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___createdAt] }, limit: 10) {
+const query = () => {
+    // 최신 순서대로 post를 불러옴
+    const result = useStaticQuery(graphql`
+        query getMarkdown {
+            allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___createdAt] }) {
                 edges {
                     node {
                         id
@@ -21,11 +19,18 @@ export const QGetPosts = () => {
                         }
                     }
                 }
+                group(field: frontmatter___tags) {
+                    tag: fieldValue
+                    totalCount
+                }
             }
         }
     `);
 
-    console.log(data);
-
-    return data.allMarkdownRemark.edges;
+    return {
+        getPosts: result.allMarkdownRemark.edges,
+        getAllTags: result.allMarkdownRemark.group,
+    };
 };
+
+export default query;

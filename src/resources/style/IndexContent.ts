@@ -2,6 +2,8 @@ import styled from 'styled-components';
 import setMobileCSS from '../../utils/setMobileCSS';
 
 const StyledIndexContent = styled.div`
+    position: relative;
+
     .card {
         background-color: transparent;
         display: grid;

@@ -25,7 +25,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
     `);
 
     if (errors) {
-        throw errors;
+        return console.error(errors);
     }
 
     data.allMarkdownRemark.edges.forEach(({ node }) => {
