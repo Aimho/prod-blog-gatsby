@@ -7,12 +7,12 @@ import SEO from '../components/Seo';
 import Layout from '../components/Layout';
 import StyledIndexHeader from '../resources/style/IndexHeader';
 import StyledIndexContent from '../resources/style/IndexContent';
-import query from '../utils/query';
+import staticQuery from '../utils/staticQuery';
 
 // Todo: List 더 보기 버튼
 
 const IndexPage: React.FC = () => {
-    const data = query().getPosts;
+    const data = staticQuery().getPosts;
     const isData = data && data.length > 0;
 
     return (

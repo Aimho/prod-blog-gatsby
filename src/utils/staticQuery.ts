@@ -1,6 +1,6 @@
 import { graphql, useStaticQuery } from 'gatsby';
 
-const query = () => {
+const staticQuery = () => {
     // 최신 순서대로 post를 불러옴
     const result = useStaticQuery(graphql`
         query getMarkdown {
@@ -33,4 +33,4 @@ const query = () => {
     };
 };
 
-export default query;
+export default staticQuery;

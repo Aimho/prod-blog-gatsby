@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { GitHub, Facebook, TagFaces } from '@material-ui/icons';
 import { Fab, Container, Grid, Drawer, Chip } from '@material-ui/core';
 
-import query from '../utils/query';
+import query from '../utils/staticQuery';
 
 const StyledHeader = styled.header`
     padding: 12px 0px;
@@ -20,7 +20,6 @@ const Header: React.FC = () => {
     const [open, setOpen] = useState(false);
     const tags = query().getAllTags;
     const isTags = tags && tags.length > 0;
-    console.log(tags);
 
     return (
         <StyledHeader>

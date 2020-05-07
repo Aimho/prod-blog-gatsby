@@ -1,12 +1,13 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { Link, graphql } from 'gatsby';
 
 import { TagTemplateProps } from './types';
 
 const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
+    console.log(props);
     const { tag } = props.pageContext;
-    const { edges, totalCount } = props.data.allMarkdownRemark;
-    const tagHeader = `${totalCount} post${totalCount === 1 ? '' : 's'} tagged with "${tag}"`;
+    const { edges } = props.data.allMarkdownRemark;
+    const tagHeader = `${edges.length} post${edges.length === 1 ? '' : 's'} tagged with "${tag}"`;
 
     return (
         <div>
@@ -22,10 +23,6 @@ const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
                     );
                 })}
             </ul>
-            {/*
-              This links to a page that does not yet exist.
-              You'll come back to it!
-            */}
             <Link to="/tags">All tags</Link>
         </div>
     );
@@ -36,16 +33,24 @@ TagTemplate.displayName = 'TagTemplate';
 export default TagTemplate;
 
 export const pageQuery = graphql`
-    query {
-        site {
-            siteMetadata {
-                title
-            }
-        }
-        allMarkdownRemark(limit: 2000) {
-            group(field: frontmatter___tags) {
-                fieldValue
-                totalCount
+    query($tag: String) {
+        allMarkdownRemark(
+            sort: { order: DESC, fields: [frontmatter___createdAt] }
+            filter: { frontmatter: { tags: { in: [$tag] } } }
+        ) {
+            edges {
+                node {
+                    id
+                    frontmatter {
+                        createdAt(formatString: "YYYY년 M월 D일")
+                        subTitle
+                        title
+                    }
+                    rawMarkdownBody
+                    fields {
+                        slug
+                    }
+                }
             }
         }
     }
