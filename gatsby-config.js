@@ -1,8 +1,10 @@
 module.exports = {
     siteMetadata: {
         title: `AimHo`,
+        titleTemplate: '%s · The Real Hero',
         description: `AimHo 블로그 입니다.`,
-        author: `@aimho`,
+        url: 'https://aimhome.com', // No trailing slash allowed!
+        image: './src/resources/images/Rectangle.png', // Path to your image you placed in the 'static' folder
     },
     plugins: [
         {
@@ -78,6 +80,7 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-styled-components`,
+        `gatsby-plugin-material-ui`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,

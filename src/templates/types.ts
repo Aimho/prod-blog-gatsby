@@ -1,12 +1,12 @@
 import { ReplaceComponentRendererArgs } from 'gatsby';
 
-export type ITemplateProps<T> = ReplaceComponentRendererArgs['props'] & {
+export type TemplateProps<T> = ReplaceComponentRendererArgs['props'] & {
     pageContext: {
         isCreatedByStatefulCreatePages: boolean;
     } & T;
 };
 
-export type IPostTemplateProps = ITemplateProps<{
+export type PostTemplateProps = TemplateProps<{
     html: string;
     createdAt: string;
     title: string;
@@ -14,7 +14,6 @@ export type IPostTemplateProps = ITemplateProps<{
     tags: string[];
 }>;
 
-export type TLatestPostListQueryFilter = {
-    ne?: String;
-    eq?: String;
-};
+export type TagTemplateProps = TemplateProps<{
+    tag: string;
+}> & { data: any };

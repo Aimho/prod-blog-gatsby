@@ -6,9 +6,9 @@ import Layout from '../components/Layout';
 import Utterances from '../components/Utterances';
 import StyledPostContent from '../resources/style/postContent';
 
-import { IPostTemplateProps } from './types';
+import { PostTemplateProps } from './types';
 
-const PostTemplate: React.FC<IPostTemplateProps> = React.memo(props => {
+const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
     const { createdAt, title, subTitle, tags, html } = props.pageContext;
 
     // tag components

@@ -1,75 +1,63 @@
-/**
- * SEO component that queries for data with
- *  Gatsby's useStaticQuery React hook
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
-
 import React from 'react';
 import Helmet from 'react-helmet';
+import { useLocation } from '@reach/router';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface Props {
     title: string;
     description?: string;
+    image?: string;
+    article?: boolean;
     tags?: string;
 }
 
-function SEO({ description, tags, title }: Props) {
-    const { site } = useStaticQuery(
-        graphql`
-            query {
-                site {
-                    siteMetadata {
-                        title
-                        description
-                        author
-                    }
-                }
-            }
-        `,
-    );
+function SEO({ description, tags, title, image, article }: Props) {
+    const { pathname } = useLocation();
+    const { site } = useStaticQuery(query);
+    const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage } = site.siteMetadata;
 
-    const lang = 'ko';
-    const metaTitle = title || site.siteMetadata.title;
-    const metaDescription = description || site.siteMetadata.description;
-    const metaKeywords = tags;
+    const seo = {
+        lang: 'ko',
+        title: title || defaultTitle,
+        description: description || defaultDescription,
+        image: `${siteUrl}${image || defaultImage}`,
+        url: `${siteUrl}${pathname}`,
+        keywords: tags,
+    };
 
     return (
-        <Helmet
-            htmlAttributes={{
-                lang,
-            }}
-            title={metaTitle}
-            meta={[
-                {
-                    name: `description`,
-                    content: metaDescription,
-                },
-                {
-                    name: `keywords`,
-                    content: metaKeywords,
-                },
-                {
-                    property: `og:title`,
-                    content: metaTitle,
-                },
-                {
-                    property: `og:description`,
-                    content: metaDescription,
-                },
-                {
-                    property: `og:type`,
-                    content: `website`,
-                },
-            ]}
-        />
+        <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{ lang: seo.lang }}>
+            <meta name="description" content={seo.description} />
+            <meta name="image" content={seo.image} />
+            {seo.url && <meta property="og:url" content={seo.url} />}
+            {(article ? true : null) && <meta property="og:type" content="article" />}
+            {seo.title && <meta property="og:title" content={seo.title} />}
+            {seo.description && <meta property="og:description" content={seo.description} />}
+            {seo.keywords && <meta name="keywords" content={seo.keywords} />}
+        </Helmet>
     );
 }
 
+export default SEO;
+
 SEO.defaultProps = {
-    description: ``,
-    tags: '',
+    title: null,
+    description: null,
+    image: null,
+    article: false,
+    tags: null,
 };
 
-export default SEO;
+const query = graphql`
+    query SEO {
+        site {
+            siteMetadata {
+                defaultTitle: title
+                titleTemplate
+                defaultDescription: description
+                siteUrl: url
+                defaultImage: image
+            }
+        }
+    }
+`;
