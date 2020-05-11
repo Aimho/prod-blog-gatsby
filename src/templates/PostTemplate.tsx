@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Container, Typography } from '@material-ui/core';
 import { DiscussionEmbed } from 'disqus-react';
 
@@ -11,15 +11,7 @@ import StyledIndexContent from '../resources/style/IndexContent';
 import { PostTemplateProps } from './types';
 
 const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
-    const [fadeIn, setFadeIn] = useState(false);
-    useEffect(() => {
-        setTimeout(() => {
-            setFadeIn(true);
-        }, 500);
-        return () => {
-            setFadeIn(false);
-        };
-    }, []);
+    const [fadeIn, setFadeIn] = useState(undefined);
 
     const { createdAt, title, tags, html } = props.pageContext;
     const disqusConfig = {
@@ -48,7 +40,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
                         <div dangerouslySetInnerHTML={{ __html: html }} />
 
                         <DiscussionEmbed {...disqusConfig} />
-                        <TagAside />
+                        <TagAside onFadeIn={() => setFadeIn(false)} />
                     </Container>
                 </StyledPostContent>
             </StyledIndexContent>

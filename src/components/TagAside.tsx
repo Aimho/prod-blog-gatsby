@@ -17,7 +17,11 @@ const StyledTag = styled.aside`
     ${setMobileCSS(`display: none;`, 1440)}
 `;
 
-const TagAside: React.FC = () => {
+interface Props {
+    onFadeIn: () => void;
+}
+
+const TagAside: React.FC<Props> = ({ onFadeIn }) => {
     const tags = staticQuery().getAllTags;
     return (
         <StyledTag>
@@ -44,7 +48,10 @@ const TagAside: React.FC = () => {
                                     size="small"
                                     label={`${t.tag} (${t.totalCount})`}
                                     style={chipStyle}
-                                    onClick={() => navigate(`/tags/${t.tag}`)}
+                                    onClick={() => {
+                                        onFadeIn();
+                                        navigate(`/tags/${t.tag}`);
+                                    }}
                                 />
                             </Grid>
                         );

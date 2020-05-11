@@ -1,7 +1,7 @@
 /**
  * Layout component
  */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 
 import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { Fade } from '@material-ui/core';
@@ -26,19 +26,23 @@ const theme = createMuiTheme({
 });
 
 const Layout: React.FC<Props> = props => {
+    const [fadeIn, setFadeIn] = useState(false);
+    useEffect(() => {
+        if (props.in === undefined) {
+            return setFadeIn(() => true);
+        }
+        setFadeIn(() => false);
+    }, [props.in]);
+
     return (
         <ThemeProvider theme={theme}>
             <Header />
 
-            <Fade in={props.in}>
+            <Fade in={fadeIn}>
                 <main style={{ marginBottom: '80px' }}>{props.children}</main>
             </Fade>
         </ThemeProvider>
     );
-};
-
-Layout.defaultProps = {
-    in: true,
 };
 
 export default Layout;

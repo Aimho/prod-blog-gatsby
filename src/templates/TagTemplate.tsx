@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { navigate, graphql } from 'gatsby';
 import { Typography, Container } from '@material-ui/core';
 
@@ -11,15 +11,7 @@ import { isValidArray } from '../utils/checker';
 import { TagTemplateProps } from './types';
 
 const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
-    const [fadeIn, setFadeIn] = useState(false);
-    useEffect(() => {
-        setTimeout(() => {
-            setFadeIn(true);
-        }, 500);
-        return () => {
-            setFadeIn(false);
-        };
-    }, []);
+    const [fadeIn, setFadeIn] = useState(undefined);
 
     const { tag } = props.pageContext;
     const posts = props.data.allMarkdownRemark.edges;
@@ -49,11 +41,14 @@ const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
                         const id = d.node.id;
                         const fields = d.node.fields;
                         const frontmatter = d.node.frontmatter;
-                        const onClick = () => navigate(`/${fields.slug}`);
+                        const onClick = () => {
+                            setFadeIn(false);
+                            navigate(`/${fields.slug}`);
+                        };
 
                         return <CardContent {...frontmatter} onClick={onClick} key={id} />;
                     })}
-                <TagAside />
+                <TagAside onFadeIn={() => setFadeIn(false)} />
             </StyledIndexContent>
         </Layout>
     );

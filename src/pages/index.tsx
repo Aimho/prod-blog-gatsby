@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 
 import SEO from '../components/Seo';
@@ -13,16 +13,7 @@ import { isValidArray } from '../utils/checker';
 // Todo: List 더 보기 버튼
 
 const IndexPage: React.FC = () => {
-    const [fadeIn, setFadeIn] = useState(false);
-    useEffect(() => {
-        setTimeout(() => {
-            setFadeIn(true);
-        }, 500);
-        return () => {
-            setFadeIn(false);
-        };
-    }, []);
-
+    const [fadeIn, setFadeIn] = useState(undefined);
     const posts = staticQuery().getPosts;
 
     return (
@@ -46,7 +37,7 @@ const IndexPage: React.FC = () => {
                     return (
                         <StyledIndexContent key={id}>
                             <CardContent {...frontmatter} onClick={onClick} />
-                            <TagAside />
+                            <TagAside onFadeIn={() => setFadeIn(false)} />
                         </StyledIndexContent>
                     );
                 })}
