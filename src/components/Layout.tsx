@@ -3,8 +3,8 @@
  */
 import React, { useState, useEffect } from 'react';
 
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { Fade } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
+import { Backdrop, CircularProgress, Fade } from '@material-ui/core';
 
 import Header from './Header';
 import '../resources/style/normalize.css';
@@ -25,6 +25,12 @@ const theme = createMuiTheme({
     },
 });
 
+const useStyles = makeStyles(theme => ({
+    backdrop: {
+        zIndex: theme.zIndex.drawer + 1,
+    },
+}));
+
 const Layout: React.FC<Props> = props => {
     const [fadeIn, setFadeIn] = useState(false);
     useEffect(() => {
@@ -34,6 +40,14 @@ const Layout: React.FC<Props> = props => {
         setFadeIn(() => false);
     }, [props.in]);
 
+    const classes = useStyles();
+
+    const Loading = (
+        <Backdrop className={classes.backdrop} open={fadeIn ? false : true}>
+            <CircularProgress color="inherit" />
+        </Backdrop>
+    );
+
     return (
         <ThemeProvider theme={theme}>
             <Header />
@@ -41,6 +55,8 @@ const Layout: React.FC<Props> = props => {
             <Fade in={fadeIn}>
                 <main style={{ marginBottom: '80px' }}>{props.children}</main>
             </Fade>
+
+            {Loading}
         </ThemeProvider>
     );
 };
