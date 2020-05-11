@@ -1,21 +1,31 @@
 import React from 'react';
 import { Container, Typography } from '@material-ui/core';
+import { DiscussionEmbed } from 'disqus-react';
 
 import SEO from '../components/Seo';
 import Layout from '../components/Layout';
 import TagAside from '../components/TagAside';
 import TagContent from '../components/TagContent';
-import Utterances from '../components/Utterances';
 import StyledPostContent from '../resources/style/postContent';
 import StyledIndexContent from '../resources/style/IndexContent';
 import { PostTemplateProps } from './types';
 
 const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
     const { createdAt, title, tags, html } = props.pageContext;
+    console.log(`${process.env.BASE_URL}${props.path}`);
+    const disqusConfig = {
+        shortname: process.env.GATSBY_DISQUS_NAME,
+        config: {
+            url: `${process.env.BASE_URL}${props.path}`,
+            identifier: props.path,
+            title: title,
+        },
+        style: { marginTop: '60px' },
+    };
 
     return (
         <Layout>
-            <SEO title={`AimHo | ${title}`} tags={tags && tags.join(', ')} />
+            <SEO title={title} tags={tags && tags.join(', ')} />
 
             <StyledIndexContent>
                 <StyledPostContent>
@@ -28,7 +38,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
 
                         <div dangerouslySetInnerHTML={{ __html: html }} />
 
-                        <Utterances repo="Aimho/prod-blog-utterances" />
+                        <DiscussionEmbed {...disqusConfig} />
                         <TagAside />
                     </Container>
                 </StyledPostContent>

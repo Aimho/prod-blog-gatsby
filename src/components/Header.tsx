@@ -41,7 +41,7 @@ const Header: React.FC = () => {
         <StyledHeader>
             <Container maxWidth="lg">
                 <Grid container justify="space-between" alignItems="center">
-                    <img src={require('../resources/images/logo.png')} alt="AimHo Blog" onClick={onClickHome} />
+                    <img src={require('../resources/images/logo.svg')} alt="AimHo Blog" onClick={onClickHome} />
                     <div>
                         <Fab
                             size="small"

@@ -7,11 +7,10 @@ interface Props {
     title: string;
     description?: string;
     image?: string;
-    article?: boolean;
     tags?: string;
 }
 
-function SEO({ description, tags, title, image, article }: Props) {
+function SEO({ description, tags, title, image }: Props) {
     const { pathname } = useLocation();
     const { site } = useStaticQuery(query);
     const { defaultTitle, titleTemplate, defaultDescription, siteUrl, defaultImage } = site.siteMetadata;
@@ -24,29 +23,22 @@ function SEO({ description, tags, title, image, article }: Props) {
         url: `${siteUrl}${pathname}`,
         keywords: tags,
     };
+    console.log(seo);
 
     return (
         <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{ lang: seo.lang }}>
-            <meta name="description" content={seo.description} />
+            <meta property="description" content={seo.description} />
             <meta name="image" content={seo.image} />
-            {seo.url && <meta property="og:url" content={seo.url} />}
-            {(article ? true : null) && <meta property="og:type" content="article" />}
-            {seo.title && <meta property="og:title" content={seo.title} />}
-            {seo.description && <meta property="og:description" content={seo.description} />}
+            <meta property="og:title" content={defaultTitle} />
+            <meta property="og:description" content={defaultDescription} />
+            <meta property="og:image" content={defaultImage} />
+            <meta property="og:type" content="article" />
             {seo.keywords && <meta name="keywords" content={seo.keywords} />}
         </Helmet>
     );
 }
 
 export default SEO;
-
-SEO.defaultProps = {
-    title: null,
-    description: null,
-    image: null,
-    article: false,
-    tags: null,
-};
 
 const query = graphql`
     query SEO {

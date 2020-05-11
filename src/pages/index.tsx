@@ -18,7 +18,7 @@ const IndexPage: React.FC = () => {
     return (
         <Layout>
             <Fragment>
-                <SEO title="AimHo | Home" />
+                <SEO title="Home" />
 
                 {isValidArray(posts) &&
                     posts.map((d, index) => {

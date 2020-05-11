@@ -75,7 +75,7 @@ GraphQL은 **선언형**(declarative) 데이터 페칭(fetching) 언어라고 �
 그래프 이론은 말 그대로 그래프에 대한 연구임 <br/>
 데이터 포인트 객체와 이들 사이의 관계가 그래프라 생각하면 됨 <br/>
 
-![](../../resources/images/Rectangle.png)
+![](../../resources/images/og.png)
 
 이 그래프 다이어그램은 데이터 포인트를 나타내는 원 6개로 이루어져 있는데, <br/>
 그래프 용어로 점은 노드(nodes) 혹은 정점(vertex)라고 부르며 노드 사이의 연결선은 엣지(edge)라고 함 <br/>

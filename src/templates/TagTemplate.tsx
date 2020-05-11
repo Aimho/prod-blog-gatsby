@@ -25,7 +25,7 @@ const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
 
     return (
         <Layout>
-            <SEO title={`AimHo | ${tag} 태그가 포함된 글`} />
+            <SEO title={`${tag} 태그가 포함된 글`} />
 
             <StyledIndexContent>
                 <Container maxWidth="md">

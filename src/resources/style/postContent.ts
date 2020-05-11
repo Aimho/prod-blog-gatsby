@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import setMobileCSS from '../../utils/setMobileCSS';
 
 const StyledPostContent = styled.div`
     position: relative;
@@ -36,17 +37,19 @@ const StyledPostContent = styled.div`
     }
 
     img {
-        left: -16px !important;
-        width: calc(100% + 32px) !important;
+        left: -32px !important;
+        width: calc(100% + 64px) !important;
+        ${setMobileCSS(`
+          left: 0px !important;
+          width: 100% !important;
+        `)}
     }
 
     .gatsby-highlight > pre {
         background-color: #f5f5f5;
     }
     .date {
-        display: inline-block;
-        padding-top: 12px;
-        border-top: solid 1px #000;
+        padding-left: 3px;
     }
 `;
 

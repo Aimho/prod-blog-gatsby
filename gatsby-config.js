@@ -1,10 +1,10 @@
 module.exports = {
     siteMetadata: {
-        title: `AimHo`,
-        titleTemplate: '%s · The Real Hero',
-        description: `AimHo 블로그 입니다.`,
-        url: 'https://aimhome.com', // No trailing slash allowed!
-        image: './src/resources/images/Rectangle.png', // Path to your image you placed in the 'static' folder
+        title: `Blog`,
+        titleTemplate: 'AimHo · %s',
+        description: `IT 스타트업 개발자(30, 남)의 고뇌를 담은 블로그`,
+        url: 'http://localhost:8000', // No trailing slash allowed!
+        image: '/images/og.png', // Path to your image you placed in the 'static' folder
     },
     plugins: [
         {
@@ -25,7 +25,7 @@ module.exports = {
             resolve: `gatsby-plugin-manifest`,
             options: {
                 start_url: `/`,
-                icon: `src/resources/images/gatsby-icon.png`, // This path is relative to the root of the site.
+                icon: `src/resources/images/favicon.svg`, // This path is relative to the root of the site.
             },
         },
         {
