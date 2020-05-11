@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Typography } from '@material-ui/core';
 import { DiscussionEmbed } from 'disqus-react';
 
@@ -11,8 +11,17 @@ import StyledIndexContent from '../resources/style/IndexContent';
 import { PostTemplateProps } from './types';
 
 const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
+    const [fadeIn, setFadeIn] = useState(false);
+    useEffect(() => {
+        setTimeout(() => {
+            setFadeIn(true);
+        }, 500);
+        return () => {
+            setFadeIn(false);
+        };
+    }, []);
+
     const { createdAt, title, tags, html } = props.pageContext;
-    console.log(`${process.env.BASE_URL}${props.path}`);
     const disqusConfig = {
         shortname: process.env.GATSBY_DISQUS_NAME,
         config: {
@@ -24,7 +33,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
     };
 
     return (
-        <Layout>
+        <Layout in={fadeIn}>
             <SEO title={title} tags={tags && tags.join(', ')} />
 
             <StyledIndexContent>

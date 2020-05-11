@@ -3,14 +3,14 @@
  */
 import React from 'react';
 
-import { ThemeProvider, createMuiTheme, makeStyles } from '@material-ui/core/styles';
-import { Backdrop, CircularProgress } from '@material-ui/core';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { Fade } from '@material-ui/core';
 
 import Header from './Header';
 import '../resources/style/normalize.css';
 
 interface Props {
-    isLoading?: boolean;
+    in?: boolean;
 }
 
 const theme = createMuiTheme({
@@ -25,30 +25,20 @@ const theme = createMuiTheme({
     },
 });
 
-const useStyles = makeStyles(theme => ({
-    backdrop: {
-        zIndex: theme.zIndex.drawer + 1,
-    },
-}));
-
 const Layout: React.FC<Props> = props => {
-    const classes = useStyles();
-
-    const Loading = (
-        <Backdrop className={classes.backdrop} open={props.isLoading ? true : false}>
-            <CircularProgress color="inherit" />
-        </Backdrop>
-    );
-
     return (
         <ThemeProvider theme={theme}>
             <Header />
 
-            <main style={{ marginBottom: '80px' }}>{props.children}</main>
-
-            {Loading}
+            <Fade in={props.in}>
+                <main style={{ marginBottom: '80px' }}>{props.children}</main>
+            </Fade>
         </ThemeProvider>
     );
+};
+
+Layout.defaultProps = {
+    in: true,
 };
 
 export default Layout;

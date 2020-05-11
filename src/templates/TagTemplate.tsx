@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { navigate, graphql } from 'gatsby';
 import { Typography, Container } from '@material-ui/core';
 
@@ -11,6 +11,16 @@ import { isValidArray } from '../utils/checker';
 import { TagTemplateProps } from './types';
 
 const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
+    const [fadeIn, setFadeIn] = useState(false);
+    useEffect(() => {
+        setTimeout(() => {
+            setFadeIn(true);
+        }, 500);
+        return () => {
+            setFadeIn(false);
+        };
+    }, []);
+
     const { tag } = props.pageContext;
     const posts = props.data.allMarkdownRemark.edges;
     const headerStyle = {
@@ -24,7 +34,7 @@ const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
     );
 
     return (
-        <Layout>
+        <Layout in={fadeIn}>
             <SEO title={`${tag} 태그가 포함된 글`} />
 
             <StyledIndexContent>

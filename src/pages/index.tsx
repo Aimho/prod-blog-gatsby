@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { navigate } from 'gatsby';
 
 import SEO from '../components/Seo';
@@ -13,35 +13,43 @@ import { isValidArray } from '../utils/checker';
 // Todo: List 더 보기 버튼
 
 const IndexPage: React.FC = () => {
+    const [fadeIn, setFadeIn] = useState(false);
+    useEffect(() => {
+        setTimeout(() => {
+            setFadeIn(true);
+        }, 500);
+        return () => {
+            setFadeIn(false);
+        };
+    }, []);
+
     const posts = staticQuery().getPosts;
 
     return (
-        <Layout>
-            <Fragment>
-                <SEO title="Home" />
+        <Layout in={fadeIn}>
+            <SEO title="Home" />
 
-                {isValidArray(posts) &&
-                    posts.map((d, index) => {
-                        const id = d.node.id;
-                        const fields = d.node.fields;
-                        const frontmatter = d.node.frontmatter;
-                        const onClick = () => navigate(`/${fields.slug}`);
+            {isValidArray(posts) &&
+                posts.map((d, index) => {
+                    const id = d.node.id;
+                    const fields = d.node.fields;
+                    const frontmatter = d.node.frontmatter;
+                    const onClick = () => navigate(`/${fields.slug}`);
 
-                        if (index === 0)
-                            return (
-                                <StyledIndexHeader key={id}>
-                                    <CardContent {...frontmatter} onClick={onClick} />{' '}
-                                </StyledIndexHeader>
-                            );
-
+                    if (index === 0)
                         return (
-                            <StyledIndexContent key={id}>
+                            <StyledIndexHeader key={id}>
                                 <CardContent {...frontmatter} onClick={onClick} />
-                                <TagAside />
-                            </StyledIndexContent>
+                            </StyledIndexHeader>
                         );
-                    })}
-            </Fragment>
+
+                    return (
+                        <StyledIndexContent key={id}>
+                            <CardContent {...frontmatter} onClick={onClick} />
+                            <TagAside />
+                        </StyledIndexContent>
+                    );
+                })}
         </Layout>
     );
 };
