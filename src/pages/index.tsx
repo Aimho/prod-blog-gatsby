@@ -1,60 +1,45 @@
 import React, { Fragment } from 'react';
 import { navigate } from 'gatsby';
-import { Typography, Container } from '@material-ui/core';
-import { ChevronRight } from '@material-ui/icons';
 
 import SEO from '../components/Seo';
 import Layout from '../components/Layout';
+import TagAside from '../components/TagAside';
+import CardContent from '../components/CardContent';
 import StyledIndexHeader from '../resources/style/IndexHeader';
 import StyledIndexContent from '../resources/style/IndexContent';
 import staticQuery from '../utils/staticQuery';
+import { isValidArray } from '../utils/checker';
 
 // Todo: List 더 보기 버튼
 
 const IndexPage: React.FC = () => {
-    const data = staticQuery().getPosts;
-    const isData = data && data.length > 0;
+    const posts = staticQuery().getPosts;
 
     return (
-        <Layout isLoading={!isData}>
+        <Layout>
             <Fragment>
                 <SEO title="AimHo | Home" />
 
-                {isData &&
-                    data.map((d, index) => {
+                {isValidArray(posts) &&
+                    posts.map((d, index) => {
                         const id = d.node.id;
                         const fields = d.node.fields;
                         const frontmatter = d.node.frontmatter;
-                        const rawMarkdownBody = d.node.rawMarkdownBody;
                         const onClick = () => navigate(`/${fields.slug}`);
 
-                        const cardContent = (
-                            <Container maxWidth="md">
-                                <div className="card">
-                                    <div className="date">
-                                        <Typography variant="caption">{frontmatter.createdAt}</Typography>
-                                    </div>
-                                    <div className="title">
-                                        <Typography variant="h4">{frontmatter.title}</Typography>
-                                    </div>
-                                    <div className="desc" onClick={onClick}>
-                                        <Typography variant="body2" component="p">
-                                            {rawMarkdownBody}
-                                        </Typography>
-                                    </div>
-                                    <div className="more" onClick={onClick}>
-                                        <Typography variant="caption" component="p">
-                                            자세히보기
-                                        </Typography>
-                                        <ChevronRight fontSize="small" />
-                                    </div>
-                                </div>
-                            </Container>
+                        if (index === 0)
+                            return (
+                                <StyledIndexHeader key={id}>
+                                    <CardContent {...frontmatter} onClick={onClick} />{' '}
+                                </StyledIndexHeader>
+                            );
+
+                        return (
+                            <StyledIndexContent key={id}>
+                                <CardContent {...frontmatter} onClick={onClick} />
+                                <TagAside />
+                            </StyledIndexContent>
                         );
-
-                        if (index === 0) return <StyledIndexHeader key={id}>{cardContent}</StyledIndexHeader>;
-
-                        return <StyledIndexContent key={id}>{cardContent}</StyledIndexContent>;
                     })}
             </Fragment>
         </Layout>

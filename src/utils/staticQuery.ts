@@ -10,8 +10,9 @@ const staticQuery = () => {
                         id
                         frontmatter {
                             createdAt(formatString: "YYYY년 M월 D일")
-                            subTitle
+                            description
                             title
+                            tags
                         }
                         rawMarkdownBody
                         fields {

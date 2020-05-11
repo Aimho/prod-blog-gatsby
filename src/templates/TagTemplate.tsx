@@ -1,30 +1,51 @@
-import React from 'react';
-import { Link, graphql } from 'gatsby';
+import React, { Fragment } from 'react';
+import { navigate, graphql } from 'gatsby';
+import { Typography, Container } from '@material-ui/core';
 
+import SEO from '../components/Seo';
+import Layout from '../components/Layout';
+import TagAside from '../components/TagAside';
+import CardContent from '../components/CardContent';
+import StyledIndexContent from '../resources/style/IndexContent';
+import { isValidArray } from '../utils/checker';
 import { TagTemplateProps } from './types';
 
 const TagTemplate: React.FC<TagTemplateProps> = React.memo(props => {
-    console.log(props);
     const { tag } = props.pageContext;
-    const { edges } = props.data.allMarkdownRemark;
-    const tagHeader = `${edges.length} post${edges.length === 1 ? '' : 's'} tagged with "${tag}"`;
+    const posts = props.data.allMarkdownRemark.edges;
+    const headerStyle = {
+        marginTop: '82px',
+        marginBottom: '72px',
+    };
+    const tagHeader = (
+        <Fragment>
+            <b style={{ color: '#2085FF' }}>{tag} 태그</b>가 포함된 글 ({posts.length})
+        </Fragment>
+    );
 
     return (
-        <div>
-            <h1>{tagHeader}</h1>
-            <ul>
-                {edges.map(({ node }) => {
-                    const { slug } = node.fields;
-                    const { title } = node.frontmatter;
-                    return (
-                        <li key={slug}>
-                            <Link to={slug}>{title}</Link>
-                        </li>
-                    );
-                })}
-            </ul>
-            <Link to="/tags">All tags</Link>
-        </div>
+        <Layout>
+            <SEO title={`AimHo | ${tag} 태그가 포함된 글`} />
+
+            <StyledIndexContent>
+                <Container maxWidth="md">
+                    <Typography variant="h4" style={headerStyle}>
+                        {tagHeader}
+                    </Typography>
+                </Container>
+
+                {isValidArray(posts) &&
+                    posts.map(d => {
+                        const id = d.node.id;
+                        const fields = d.node.fields;
+                        const frontmatter = d.node.frontmatter;
+                        const onClick = () => navigate(`/${fields.slug}`);
+
+                        return <CardContent {...frontmatter} onClick={onClick} key={id} />;
+                    })}
+                <TagAside />
+            </StyledIndexContent>
+        </Layout>
     );
 });
 
@@ -43,8 +64,9 @@ export const pageQuery = graphql`
                     id
                     frontmatter {
                         createdAt(formatString: "YYYY년 M월 D일")
-                        subTitle
+                        description
                         title
+                        tags
                     }
                     rawMarkdownBody
                     fields {

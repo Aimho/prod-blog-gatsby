@@ -20,7 +20,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
                 html: node.html,
                 createdAt: node.frontmatter.createdAt,
                 title: node.frontmatter.title,
-                subTitle: node.frontmatter.subTitle,
+                description: node.frontmatter.description,
                 tags: node.frontmatter.tags,
             },
         });
@@ -30,7 +30,7 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
     const tags = data.tagsGroup.group;
     tags.forEach(tag => {
         createPage({
-            path: `/tags/${lodash.kebabCase(tag.fieldValue)}/`,
+            path: `/tags/${lodash.kebabCase(tag.fieldValue)}`,
             component: path.resolve(__dirname, '../templates/TagTemplate.tsx'),
             context: {
                 tag: tag.fieldValue,
@@ -48,7 +48,7 @@ const query = `
                 frontmatter {
                     createdAt(formatString: "YYYY년 M월 D일")
                     title
-                    subTitle
+                    description
                     tags
                 }
                 fields {

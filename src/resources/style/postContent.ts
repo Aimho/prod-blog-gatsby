@@ -1,7 +1,16 @@
 import styled from 'styled-components';
 
 const StyledPostContent = styled.div`
-    padding: 24px 0px;
+    position: relative;
+    margin: 24px 0px;
+    color: #5e6467;
+
+    h1,
+    h2,
+    h3,
+    h4 {
+        color: #000;
+    }
 
     h1 {
         font-size: 40px;
@@ -33,6 +42,11 @@ const StyledPostContent = styled.div`
 
     .gatsby-highlight > pre {
         background-color: #f5f5f5;
+    }
+    .date {
+        display: inline-block;
+        padding-top: 12px;
+        border-top: solid 1px #000;
     }
 `;
 

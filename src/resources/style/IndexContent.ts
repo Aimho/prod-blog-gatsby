@@ -3,23 +3,25 @@ import setMobileCSS from '../../utils/setMobileCSS';
 
 const StyledIndexContent = styled.div`
     position: relative;
+    max-width: 1440px;
+    margin: 0 auto;
 
     .card {
         background-color: transparent;
         display: grid;
         grid-template-columns:
-            [date-start] repeat(4, 1fr) [date-end title-start desc-start more-start] repeat(8, 1fr)
-            [title-end desc-end more-end];
-        grid-template-rows: [title-start date-start] auto [title-end desc-start] auto [desc-end more-start] auto [more-end date-end];
+            [date-start] repeat(3, 1fr) [date-end title-start desc-start tag-start] repeat(9, 1fr)
+            [title-end desc-end tag-end];
+        grid-template-rows: [title-start date-start] auto [title-end desc-start] auto [desc-end tag-start] auto [tag-end date-end];
         grid-column-gap: 18px;
         grid-row-gap: 12px;
 
         ${setMobileCSS(`
           grid-template-columns:
-              [title-start desc-start more-start] repeat(12, 1fr) [title-end desc-end more-end];
-          grid-template-rows: [title-start title-end] auto [desc-start desc-end] auto [more-start more-end];
+              [title-start desc-start tag-start] repeat(12, 1fr) [title-end desc-end tag-end];
+          grid-template-rows: [title-start title-end] auto [desc-start desc-end] auto [tag-start tag-end];
           grid-column-gap: 14px;
-          grid-row-gap: 8px;
+          grid-row-gap: 14px;
         `)}
 
         .title {
@@ -38,7 +40,6 @@ const StyledIndexContent = styled.div`
         .desc {
             grid-area: desc;
             color: #666;
-            height: calc(5 * 24px);
             overflow: hidden;
             text-overflow: ellipsis;
             display: -webkit-box;
@@ -61,19 +62,19 @@ const StyledIndexContent = styled.div`
                 background: linear-gradient(rgba(255, 255, 255, 0), #fff);
             }
         }
-        .more {
-            grid-area: more;
+        .tag {
+            grid-area: tag;
             display: flex;
             align-items: center;
             padding-top: 12px;
             ${setMobileCSS(`
-              border-top: solid 1px #000;
+              padding-top: 4px;
+              padding-bottom: 12px;
               justify-content: flex-end;
             `)}
         }
-
-        .desc,
-        .more {
+        .title,
+        .desc {
             cursor: pointer;
             &:hover {
                 text-decoration: underline #666;

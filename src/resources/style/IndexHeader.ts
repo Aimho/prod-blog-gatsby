@@ -19,18 +19,18 @@ const StyledIndexHeader = styled.div`
 
         display: grid;
         grid-template-columns:
-            [date-start title-start] repeat(6, 1fr) [title-end desc-start date-end more-start] repeat(6, 1fr)
-            [desc-end more-end];
-        grid-template-rows: [title-start desc-start] auto [title-end desc-end date-start more-start] auto [date-end more-end];
+            [date-start title-start] repeat(6, 1fr) [title-end desc-start date-end tag-start] repeat(6, 1fr)
+            [desc-end tag-end];
+        grid-template-rows: [title-start desc-start] auto [title-end desc-end date-start tag-start] auto [date-end tag-end];
         grid-column-gap: 24px;
-        grid-row-gap: 56px;
+        grid-row-gap: 24px;
 
         ${setMobileCSS(`
           grid-template-columns:
-              [title-start desc-start more-start] repeat(12, 1fr) [title-end desc-end more-end];
-          grid-template-rows: [title-start title-end] auto [desc-start desc-end] auto [more-start more-end];
+              [title-start desc-start tag-start] repeat(12, 1fr) [title-end desc-end tag-end];
+          grid-template-rows: [title-start title-end] auto [desc-start desc-end] auto [tag-start tag-end];
           grid-column-gap: 16px;
-          grid-row-gap: 32px;
+          grid-row-gap: 16px;
         `)}
 
         .title {
@@ -72,8 +72,8 @@ const StyledIndexHeader = styled.div`
                 background: linear-gradient(rgba(18, 18, 18, 0), #121212);
             }
         }
-        .more {
-            grid-area: more;
+        .tag {
+            grid-area: tag;
             display: flex;
             align-items: center;
             padding-top: 12px;
@@ -83,12 +83,11 @@ const StyledIndexHeader = styled.div`
               justify-content: flex-end;
             `)}
         }
-
-        .desc,
-        .more {
+        .title,
+        .desc {
             cursor: pointer;
             &:hover {
-                text-decoration: underline #eee;
+                text-decoration: underline #666;
             }
         }
     }

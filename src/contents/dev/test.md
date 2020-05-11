@@ -2,7 +2,7 @@
 category: 'dev'
 createdAt: '2019-05-04'
 title: 웹 앱 API 개발을 위한 GraphQL
-subTitle: '라인에 기반을 둔 배치 방법에 대해서는 다음에 더 자세히 탐구해 볼 예정입니다.'
+description: '라인에 기반을 둔 배치 방법에 대해서는 다음에 더 자세히 탐구해 볼 예정입니다.'
 tags: ['tag', 'must', 'be', 'array']
 ---
 

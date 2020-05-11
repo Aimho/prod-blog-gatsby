@@ -1,52 +1,38 @@
 import React from 'react';
-import { Container, Typography, Grid, Chip } from '@material-ui/core';
+import { Container, Typography } from '@material-ui/core';
 
 import SEO from '../components/Seo';
 import Layout from '../components/Layout';
+import TagAside from '../components/TagAside';
+import TagContent from '../components/TagContent';
 import Utterances from '../components/Utterances';
 import StyledPostContent from '../resources/style/postContent';
-
+import StyledIndexContent from '../resources/style/IndexContent';
 import { PostTemplateProps } from './types';
 
 const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
-    const { createdAt, title, subTitle, tags, html } = props.pageContext;
-
-    // tag components
-    const Tag: React.FC = () => {
-        if (!tags) return null;
-
-        return (
-            <Grid container spacing={2} style={{ marginBottom: '48px' }}>
-                {tags.map((tag, index) => (
-                    <Grid item key={index}>
-                        <Chip label={tag} size="small" style={{ backgroundColor: '#2085FF', color: '#fff' }} />
-                    </Grid>
-                ))}
-            </Grid>
-        );
-    };
+    const { createdAt, title, tags, html } = props.pageContext;
 
     return (
         <Layout>
             <SEO title={`AimHo | ${title}`} tags={tags && tags.join(', ')} />
 
-            <StyledPostContent>
-                <Container maxWidth="md" style={{ paddingTop: '60px' }}>
-                    <Typography variant="caption" style={{ color: '#2085FF' }} component="p">
-                        {createdAt}
-                    </Typography>
-                    <Typography variant="h1">{title}</Typography>
-                    <Typography variant="body1" style={{ color: '#878787', marginBottom: '10px' }}>
-                        {subTitle}
-                    </Typography>
+            <StyledIndexContent>
+                <StyledPostContent>
+                    <Container maxWidth="md" style={{ marginTop: '60px' }}>
+                        <Typography className="date" variant="caption" component="p">
+                            {createdAt}
+                        </Typography>
+                        <Typography variant="h1">{title}</Typography>
+                        <TagContent tags={tags} />
 
-                    <Tag />
+                        <div dangerouslySetInnerHTML={{ __html: html }} />
 
-                    <div dangerouslySetInnerHTML={{ __html: html }} />
-
-                    <Utterances repo="Aimho/prod-blog-utterances" />
-                </Container>
-            </StyledPostContent>
+                        <Utterances repo="Aimho/prod-blog-utterances" />
+                        <TagAside />
+                    </Container>
+                </StyledPostContent>
+            </StyledIndexContent>
         </Layout>
     );
 });

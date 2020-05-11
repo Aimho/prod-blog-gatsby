@@ -2,30 +2,46 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
 
-import { GitHub, Facebook, TagFaces } from '@material-ui/icons';
-import { Fab, Container, Grid, Drawer, Chip } from '@material-ui/core';
+import { GitHub, Facebook, LocalOffer, Cancel } from '@material-ui/icons';
+import { Fab, Container, Grid, Drawer, Button } from '@material-ui/core';
 
-import query from '../utils/staticQuery';
+import TagAside from './TagAside';
+import setMobileCSS from '../utils/setMobileCSS';
 
 const StyledHeader = styled.header`
     padding: 12px 0px;
     background-color: #000;
     img {
-        height: 20px;
+        height: 30px;
         cursor: pointer;
+    }
+    .tagBtn {
+        display: none;
+        ${setMobileCSS(`display: inline-flex;`, 1440)}
+    }
+`;
+
+const StyledDrawer = styled.div`
+    position: relative;
+    padding: 24px;
+    button {
+        position: absolute;
+        right: 8px;
+        top: 16px;
     }
 `;
 
 const Header: React.FC = () => {
     const [open, setOpen] = useState(false);
-    const tags = query().getAllTags;
-    const isTags = tags && tags.length > 0;
+    const onClickHome = () => navigate('/');
+    const onClickOpenDrawer = () => setOpen(true);
+    const onClickCloseDrawer = () => setOpen(false);
 
     return (
         <StyledHeader>
             <Container maxWidth="lg">
                 <Grid container justify="space-between" alignItems="center">
-                    <img src={require('../resources/images/logo.png')} alt="AimHo Blog" onClick={() => navigate('/')} />
+                    <img src={require('../resources/images/logo.png')} alt="AimHo Blog" onClick={onClickHome} />
                     <div>
                         <Fab
                             size="small"
@@ -43,29 +59,25 @@ const Header: React.FC = () => {
                         >
                             <Facebook />
                         </Fab>
-                        <Fab size="small" color="primary" aria-label="tag" onClick={() => setOpen(true)}>
-                            <TagFaces />
+                        <Fab
+                            className="tagBtn"
+                            size="small"
+                            color="primary"
+                            aria-label="tag"
+                            onClick={onClickOpenDrawer}
+                        >
+                            <LocalOffer />
                         </Fab>
                     </div>
                 </Grid>
             </Container>
-            <Drawer anchor="right" open={open} onClose={() => setOpen(false)}>
-                <Grid
-                    container
-                    spacing={2}
-                    wrap="wrap"
-                    style={{ padding: '24px', minHeight: '100vh', backgroundColor: '#000' }}
-                >
-                    {isTags &&
-                        tags.map((t, index) => (
-                            <Grid item key={index}>
-                                <Chip
-                                    label={`${t.tag} ${t.totalCount}`}
-                                    style={{ backgroundColor: '#2085FF', color: '#fff' }}
-                                />
-                            </Grid>
-                        ))}
-                </Grid>
+            <Drawer anchor="right" open={open} onClose={onClickCloseDrawer}>
+                <StyledDrawer>
+                    <TagAside />
+                    <Button variant="text" onClick={onClickCloseDrawer}>
+                        <Cancel />
+                    </Button>
+                </StyledDrawer>
             </Drawer>
         </StyledHeader>
     );
