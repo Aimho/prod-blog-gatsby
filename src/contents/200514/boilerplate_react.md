@@ -11,48 +11,57 @@ tags: ['CRA', 'React', 'Boilerplate']
 >
 > 컴퓨터 프로그래밍에서 상용구 코드 또는 상용구는 수정하지 않거나 최소한의 수정만을 거쳐 여러 곳에 필수적으로 사용되는 코드를 말한다. 이와 같은 코드는 최소한의 작업을 하기 위해 많은 분량의 코드를 작성해야 하는 언어에서 자주 사용된다.
 
-### 1. CRA(Create React App)로 프로젝트 생성
+## 요약
 
-타입스크립트를 적용할 것이므로 기본 `CRA` 명령어 뒤에 `--template typescript`를 붙여준다
+-   완성된 Boilerplate git 주소
+    -   https://github.com/Aimho/boilerplate-react
+-   적용된 패키지
+    -   Typescript
+    -   Redux
+    -   Custom Hooks
+    -   i18n
+    -   axios
+    -   styled-components
 
-```shell
-npx create-react-app "project name" --template typescript
-```
+## 기본 설정
 
-### 2. Prettier 적용
+코드 스타일 유지 및 편의성을 위한 VSCode 설정
 
-협업 or 코드 스타일 유지를 위해 `Prettier`를 적용해보자 순서는 아래와 같다
+-   VSCode Extension(Prettier, vscode-icons) 설치
+-   settings.json 설정 변경
+-   .editorconfig 추가
 
--   VsCode Extension 설치
--   Prettier 설정 변경
-
-우선 [`Prettier - Code formatter`](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)를 설치한다.
+VSCode Extension에서 [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)와 [vscode-icons](https://marketplace.visualstudio.com/items?itemName=vscode-icons-team.vscode-icons)를 설치한다.
 
 ![Prettier - Code formatter](./vscodePrettier.png 'Prettier - Code formatter')
 
-설치가 끝나면 Prettier 설정을 해보자 나는 `settings.json`, `.editorconfig`만 변경했다. <br/>
-Prettier 설정은 아래의 순서로 적용된다.
+![vscode - icons](./vscodeIcons.png 'vscode - icons')
 
-> `settings.json` < `.editorconfig` < `.prettierrc`
+설치가 끝나면 settings.json 설정을 한다.
 
 ```json
 # settings.json
-  // 저장 시 자동 포맷팅 되게 할지 설정 (원하지않으면 false해도 됨)
+{
+  "window.zoomLevel": 0,
+  "editor.tabSize": 2,
+  "editor.fontLigatures": true,
+  "editor.snippetSuggestions": "top",
+  // 코드 자동 수정
   "editor.formatOnSave": true,
-  // 자동 포맷팅 시 기본 포매터 설정
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "[typescriptreact]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  "javascript.preferences.importModuleSpecifier": "relative",
+  // Explorer에서 제외
+  "files.exclude": {
+    "**/.DS_Store": true,
+    "**/.git": true,
+    "**/.idea": true,
+    "**/.vscode": false,
+    "**/tmp": true,
+    "**/yarn.lock": true
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  // 검색 대상 제외
+  // 검색 대상에서 제외
   "search.exclude": {
     "**/node_modules": true,
     "**/bower_components": true,
@@ -61,15 +70,21 @@ Prettier 설정은 아래의 순서로 적용된다.
     "**/tmp": true,
     "**/coverage": true,
     "**/build": true,
-    "**/dist": true,
     "**/Pods": true,
     "**/*.xcodeproj": true,
     "**/*.xcworkspace": true
   },
-  // prettier 정의
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  // vscode-icons 설정
+  "workbench.iconTheme": "vscode-icons",
+  // prettier 설정
   "prettier.arrowParens": "always",
   "prettier.quoteProps": "preserve",
-  "prettier.singleQuote": true
+  "prettier.singleQuote": true,
+}
 ```
 
 ```shell
@@ -93,6 +108,19 @@ trim_trailing_whitespace = false
 max_line_length = 0
 ```
 
-### 3. react-router-dom 적용
+`Prettier`는 3가지 방법으로 설정을 변경할 수 있으며 각 방법마다 우선순위가 있다고 한다. (참고: https://ux.stories.pe.kr/150)
 
-https://ux.stories.pe.kr/150
+## 폴더구조 설명
+
+![폴더구조](./folder.png '폴더구조')
+
+각 폴더는 다음과 같은 역할을 가진 파일들이 위치해 있다.
+
+-   api - API 통신에 사용되는 함수
+-   component - 재사용 되는 컴포넌트
+-   config - App 기본 설정이나 환경변수
+-   hooks - Custom Hooks (ex: Input태그 value, onChange 관련 hook)
+-   locale - i18n 번역
+-   modules - Redux
+-   page - url 경로에서 노출될 컴포넌트
+-   utils - 자주 사용하는 함수

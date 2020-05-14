@@ -36,20 +36,57 @@ const StyledPostContent = styled.div`
         ${setFontSize(24, 400)}
     }
 
-    img {
-        left: -32px !important;
-        width: calc(100% + 64px) !important;
-        ${setMobileCSS(`
-          left: 0px !important;
-          width: 100% !important;
-        `)}
+    ul {
+        li > p {
+            margin: 0px;
+        }
+        li > p + ul {
+            margin-top: 0px;
+            margin-bottom: 12px;
+        }
     }
 
+    blockquote {
+        border-left: solid 5px #999999;
+        background-color: #f5f5f5;
+        margin: 0px;
+        padding: 0.5em 40px;
+        opacity: 0.8;
+    }
+
+    code.language-text {
+        background-color: #2085ff;
+        color: #fff;
+        font-size: 12px;
+        padding: 4px;
+        margin: 0 2px;
+    }
     .gatsby-highlight > pre {
         background-color: #f5f5f5;
     }
     .date {
         padding-left: 3px;
+    }
+
+    .gatsby-resp-image-figure {
+        margin: 0px -32px;
+        ${setMobileCSS(`margin: 0px;`)}
+    }
+    .gatsby-resp-image-wrapper {
+        max-width: initial !important;
+        margin: 0px;
+    }
+    .gatsby-resp-image-figcaption {
+        display: none;
+    }
+
+    a {
+        color: inherit;
+        text-decoration: none;
+        border-bottom: solid 3px #70b6ff;
+        &:hover {
+            border-color: #2085ff;
+        }
     }
 `;
 
