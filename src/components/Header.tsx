@@ -33,6 +33,7 @@ const StyledDrawer = styled.div`
 
 const Header: React.FC = () => {
     const [open, setOpen] = useState(false);
+    const [fadeIn, setFadeIn] = useState(undefined);
     const onClickHome = () => navigate('/');
     const onClickOpenDrawer = () => setOpen(true);
     const onClickCloseDrawer = () => setOpen(false);
@@ -73,7 +74,7 @@ const Header: React.FC = () => {
             </Container>
             <Drawer anchor="right" open={open} onClose={onClickCloseDrawer}>
                 <StyledDrawer>
-                    <TagAside />
+                    <TagAside onFadeIn={() => setFadeIn(false)} />
                     <Button variant="text" onClick={onClickCloseDrawer}>
                         <Cancel />
                     </Button>

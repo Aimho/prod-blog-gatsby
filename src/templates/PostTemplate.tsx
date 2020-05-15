@@ -12,13 +12,12 @@ import { PostTemplateProps } from './types';
 
 const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
     const [fadeIn, setFadeIn] = useState(undefined);
-    console.log(`${process.env.BASE_URL}${props.path}`);
 
     const { createdAt, title, tags, html } = props.pageContext;
     const disqusConfig = {
         shortname: process.env.GATSBY_DISQUS_NAME,
         config: {
-            url: `${process.env.BASE_URL}${props.path}`,
+            url: window.location.href,
             identifier: props.path,
             title: title,
         },
