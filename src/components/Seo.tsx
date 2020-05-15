@@ -23,7 +23,6 @@ function SEO({ description, tags, title, image }: Props) {
         url: `${siteUrl}${pathname}`,
         keywords: tags,
     };
-    console.log(seo);
 
     return (
         <Helmet title={seo.title} titleTemplate={titleTemplate} htmlAttributes={{ lang: seo.lang }}>

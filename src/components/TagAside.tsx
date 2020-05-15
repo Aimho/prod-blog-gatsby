@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { Typography, Grid, Chip } from '@material-ui/core';
 import { LocalOffer } from '@material-ui/icons';
 
+import lodash from 'lodash';
 import staticQuery from '../utils/staticQuery';
 import { isValidArray } from '../utils/checker';
 import setMobileCSS from '../utils/setMobileCSS';
@@ -50,7 +51,7 @@ const TagAside: React.FC<Props> = ({ onFadeIn }) => {
                                     style={chipStyle}
                                     onClick={() => {
                                         onFadeIn();
-                                        navigate(`/tags/${t.tag}`);
+                                        navigate(`/tags/${lodash.kebabCase(t.tag)}`);
                                     }}
                                 />
                             </Grid>

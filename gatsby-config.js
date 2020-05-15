@@ -4,7 +4,7 @@ module.exports = {
         titleTemplate: 'AimHo · %s',
         description: `IT 스타트업 개발자(30, 남)의 고뇌를 담은 블로그`,
         url: 'https://aimho-blog.netlify.app', // No trailing slash allowed!
-        image: '/images/og.png', // Path to your image you placed in the 'static' folder
+        image: '/og.png', // Path to your image you placed in the 'static' folder
     },
     plugins: [
         {
