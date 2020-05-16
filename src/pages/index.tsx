@@ -25,7 +25,10 @@ const IndexPage: React.FC = () => {
                     const id = d.node.id;
                     const fields = d.node.fields;
                     const frontmatter = d.node.frontmatter;
-                    const onClick = () => navigate(`/${fields.slug}`);
+                    const onClick = () => {
+                        setFadeIn(false);
+                        navigate(`/${fields.slug}`);
+                    };
 
                     if (index === 0)
                         return (

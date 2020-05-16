@@ -19,7 +19,7 @@ const StyledTag = styled.aside`
 `;
 
 interface Props {
-    onFadeIn: () => void;
+    onFadeIn?: () => void;
 }
 
 const TagAside: React.FC<Props> = ({ onFadeIn }) => {
@@ -50,7 +50,7 @@ const TagAside: React.FC<Props> = ({ onFadeIn }) => {
                                     label={`${t.tag} (${t.totalCount})`}
                                     style={chipStyle}
                                     onClick={() => {
-                                        onFadeIn();
+                                        onFadeIn && onFadeIn();
                                         navigate(`/tags/${lodash.kebabCase(t.tag)}`);
                                     }}
                                 />

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
 
-import { GitHub, Facebook, LocalOffer, Cancel } from '@material-ui/icons';
+import { GitHub, Facebook, LocalOffer, Close } from '@material-ui/icons';
 import { Fab, Container, Grid, Drawer, Button } from '@material-ui/core';
 
 import TagAside from './TagAside';
@@ -29,11 +29,14 @@ const StyledDrawer = styled.div`
         right: 8px;
         top: 16px;
     }
+    aside {
+        position: static;
+        display: flex !important;
+    }
 `;
 
 const Header: React.FC = () => {
     const [open, setOpen] = useState(false);
-    const [fadeIn, setFadeIn] = useState(undefined);
     const onClickHome = () => navigate('/');
     const onClickOpenDrawer = () => setOpen(true);
     const onClickCloseDrawer = () => setOpen(false);
@@ -74,9 +77,9 @@ const Header: React.FC = () => {
             </Container>
             <Drawer anchor="right" open={open} onClose={onClickCloseDrawer}>
                 <StyledDrawer>
-                    <TagAside onFadeIn={() => setFadeIn(false)} />
-                    <Button variant="text" onClick={onClickCloseDrawer}>
-                        <Cancel />
+                    <TagAside />
+                    <Button variant="text" onClick={onClickCloseDrawer} disableFocusRipple>
+                        <Close color="primary" />
                     </Button>
                 </StyledDrawer>
             </Drawer>
