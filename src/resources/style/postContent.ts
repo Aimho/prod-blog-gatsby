@@ -80,6 +80,12 @@ const StyledPostContent = styled.div`
         display: none;
     }
 
+    p img {
+        margin: 0px -32px;
+        ${setMobileCSS(`margin: 0px;`)}
+        width: 100%;
+    }
+
     a {
         color: inherit;
         text-decoration: none;
