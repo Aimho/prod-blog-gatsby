@@ -3,7 +3,7 @@ module.exports = {
         title: `Blog`,
         titleTemplate: 'AimHo · %s',
         description: `IT 스타트업 개발자(30, 남)의 고뇌를 담은 블로그`,
-        url: 'https://aimho.me', // No trailing slash allowed!
+        siteUrl: 'https://aimho.me', // No trailing slash allowed!
         image: '/og.png', // Path to your image you placed in the 'static' folder
     },
     plugins: [
