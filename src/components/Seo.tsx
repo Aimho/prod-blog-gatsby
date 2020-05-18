@@ -20,7 +20,7 @@ function SEO({ description, tags, title, image }: Props) {
         title: title || defaultTitle,
         description: description || defaultDescription,
         image: `${siteUrl}${image || defaultImage}`,
-        url: `${siteUrl}${pathname}`,
+        siteUrl: `${siteUrl}${pathname}`,
         keywords: tags,
     };
 
