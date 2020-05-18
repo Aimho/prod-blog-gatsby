@@ -3,7 +3,7 @@ module.exports = {
         title: `Blog`,
         titleTemplate: 'AimHo · %s',
         description: `IT 스타트업 개발자(30, 남)의 고뇌를 담은 블로그`,
-        url: 'https://aimho-blog.netlify.app', // No trailing slash allowed!
+        url: 'https://aimho.me', // No trailing slash allowed!
         image: '/og.png', // Path to your image you placed in the 'static' folder
     },
     plugins: [
@@ -81,6 +81,7 @@ module.exports = {
         `gatsby-transformer-sharp`,
         `gatsby-plugin-styled-components`,
         `gatsby-plugin-material-ui`,
+        `gatsby-plugin-advanced-sitemap`,
         // this (optional) plugin enables Progressive Web App + Offline functionality
         // To learn more, visit: https://gatsby.dev/offline
         // `gatsby-plugin-offline`,

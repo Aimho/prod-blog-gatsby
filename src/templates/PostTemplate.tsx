@@ -13,6 +13,7 @@ import { PostTemplateProps } from './types';
 const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
     const [fadeIn, setFadeIn] = useState(undefined);
     console.log(`${process.env.BASE_URL}${props.path}`);
+    console.log(`${process.env.GATSBY_DISQUS_NAME}`);
 
     const { createdAt, title, tags, html } = props.pageContext;
     const disqusConfig = {

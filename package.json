@@ -12,6 +12,7 @@
     "disqus-react": "^1.0.8",
     "gatsby": "^2.19.45",
     "gatsby-image": "^2.2.44",
+    "gatsby-plugin-advanced-sitemap": "^1.5.4",
     "gatsby-plugin-manifest": "^2.2.48",
     "gatsby-plugin-material-ui": "^2.1.8",
     "gatsby-plugin-offline": "^3.0.41",
@@ -42,7 +43,7 @@
   ],
   "license": "MIT",
   "scripts": {
-    "build": "NODE_ENV=production gatsby build",
+    "build": "gatsby build",
     "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
     "start": "gatsby develop",
     "serve": "gatsby serve",
