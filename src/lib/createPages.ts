@@ -6,13 +6,11 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
     const { createPage } = actions;
     const { data, errors } = await graphql<any>(query);
 
-    if (errors) {
-        return console.error(errors);
-    }
+    if (errors) return console.error(errors);
 
     // create post pages
     const posts = data.posts.edges;
-    posts.forEach(({ node }) => {
+    posts.forEach(({ node, previous, next }) => {
         createPage({
             path: node.fields.slug,
             component: path.resolve(__dirname, '../templates/PostTemplate.tsx'),
@@ -22,6 +20,18 @@ export async function createPages({ actions, graphql }: CreatePagesArgs) {
                 title: node.frontmatter.title,
                 description: node.frontmatter.description,
                 tags: node.frontmatter.tags,
+                previousPost: previous
+                    ? {
+                          path: previous.fields.slug,
+                          title: previous.frontmatter.title,
+                      }
+                    : undefined,
+                nextPost: next
+                    ? {
+                          path: next.fields.slug,
+                          title: next.frontmatter.title,
+                      }
+                    : undefined,
             },
         });
     });
@@ -43,6 +53,14 @@ const query = `
   {
     posts: allMarkdownRemark(sort: { order: DESC, fields: [frontmatter___createdAt] }, limit: 2000) {
         edges {
+            previous {
+                fields {
+                  slug
+                }
+                frontmatter {
+                  title
+                }
+            }
             node {
                 html
                 frontmatter {
@@ -53,6 +71,14 @@ const query = `
                 }
                 fields {
                     slug
+                }
+            }
+            next {
+                fields {
+                    slug
+                }
+                frontmatter {
+                    title
                 }
             }
         }

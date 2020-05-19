@@ -30,12 +30,13 @@ const IndexPage: React.FC = () => {
                         navigate(`/${fields.slug}`);
                     };
 
-                    if (index === 0)
+                    if (index === 0) {
                         return (
                             <StyledIndexHeader key={id}>
                                 <CardContent {...frontmatter} onClick={onClick} />
                             </StyledIndexHeader>
                         );
+                    }
 
                     return (
                         <StyledIndexContent key={id}>

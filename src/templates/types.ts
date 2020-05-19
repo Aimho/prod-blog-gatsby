@@ -12,8 +12,15 @@ export type PostTemplateProps = TemplateProps<{
     title: string;
     description: string;
     tags: string[];
+    previousPost: previousNextPost;
+    nextPost: previousNextPost;
 }>;
 
 export type TagTemplateProps = TemplateProps<{
     tag: string;
 }> & { data: any };
+
+type previousNextPost = {
+    path: string;
+    title: string;
+};
