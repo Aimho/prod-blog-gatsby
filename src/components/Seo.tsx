@@ -35,6 +35,11 @@ function SEO({ description, tags, title, image }: Props) {
             {seo.keywords && <meta name="keywords" content={seo.keywords} />}
 
             <meta name="google-site-verification" content="nPCEvVUtafq3NEt5n8kQ-fQvrQCDsyTQ3yKuCwuctWg" />
+            <script
+                data-ad-client="ca-pub-5729988905356381"
+                async
+                src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+            ></script>
         </Helmet>
     );
 }
