@@ -33,6 +33,8 @@ function SEO({ description, tags, title, image }: Props) {
             <meta property="og:image" content={defaultImage} />
             <meta property="og:type" content="article" />
             {seo.keywords && <meta name="keywords" content={seo.keywords} />}
+
+            <meta name="google-site-verification" content="nPCEvVUtafq3NEt5n8kQ-fQvrQCDsyTQ3yKuCwuctWg" />
         </Helmet>
     );
 }

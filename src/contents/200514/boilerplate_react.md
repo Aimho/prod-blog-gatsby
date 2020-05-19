@@ -1,11 +1,9 @@
 ---
 createdAt: '2020-05-14'
 title: React Boilerplate 만들기
-description: 'CRA(Create React App)를 사용하여 자주 사용하는 라이브러리가 적용된 Boilerplate(상용구)를 만들어보자'
+description: '회사에서 새로운 프로젝트를 시작하면서 `CRA(Create React App)`로 작업환경을 구축했는데 다른 프로젝트를 만들때도 사용하면 좋을 것 같아서 Boilerplate(상용구)를 만들어보았다.'
 tags: ['CRA', 'React', 'Boilerplate']
 ---
-
-회사에서 새로운 프로젝트를 시작하면서 `CRA(Create React App)`로 작업환경을 구축했는데 다른 프로젝트를 만들때도 사용하면 좋을 것 같아서 Boilerplate(상용구)를 만들어보았다.
 
 > [Boilerplate code(상용구 코드)](https://ko.wikipedia.org/wiki/%EC%83%81%EC%9A%A9%EA%B5%AC_%EC%BD%94%EB%93%9C)
 >

@@ -10,7 +10,7 @@ export type PostTemplateProps = TemplateProps<{
     html: string;
     createdAt: string;
     title: string;
-    subTitle: string;
+    description: string;
     tags: string[];
 }>;
 

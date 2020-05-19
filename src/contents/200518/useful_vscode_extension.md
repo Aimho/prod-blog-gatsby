@@ -1,7 +1,7 @@
 ---
 createdAt: '2020-05-18'
 title: Useful VSCode Extension
-description: 'VSCode에서 유용하게 사용하고 있는 extension 모음'
+description: '가끔 맥을 초기화 하면 VSCode를 세팅하는데, 유용하게 사용하는 Extension들을 기록해두면 좋을 것 같아서 Extension의 이름과 어떤 역할을 하는지 간략하게 적어보았다.'
 tags:
     [
         'VSCode',
@@ -16,8 +16,6 @@ tags:
         'Code Spell Checker',
     ]
 ---
-
-가끔 맥을 초기화 하면 VSCode를 세팅하는데, 유용하게 사용하는 Extension들을 기록해두면 좋을 것 같아서 Extension의 이름과 어떤 역할을 하는지 간략하게 적어보았다.
 
 ## vscode-icons
 
