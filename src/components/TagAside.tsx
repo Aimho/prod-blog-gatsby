@@ -16,6 +16,13 @@ const StyledTag = styled.aside`
     right: 32px;
     width: 200px;
     ${setMobileCSS(`display: none;`, 1440)}
+
+    .MuiButtonBase-root {
+        transition: background-color 0.3s;
+        &:hover {
+            background-color: #2085ff !important;
+        }
+    }
 `;
 
 interface Props {

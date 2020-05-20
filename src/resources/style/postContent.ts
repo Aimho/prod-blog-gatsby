@@ -55,8 +55,8 @@ const StyledPostContent = styled.div`
     }
 
     code.language-text {
-        background-color: #2085ff;
-        color: #fff;
+        background-color: #f5f5f5;
+        color: #ff0000;
         font-size: 12px;
         padding: 4px;
         margin: 0 2px;
@@ -89,9 +89,10 @@ const StyledPostContent = styled.div`
     a {
         color: inherit;
         text-decoration: none;
-        border-bottom: solid 3px #70b6ff;
+        border-bottom: dashed 1px #70b6ff;
+        transition: color 0.3s;
         &:hover {
-            border-color: #2085ff;
+            color: #2085ff;
         }
     }
 `;
