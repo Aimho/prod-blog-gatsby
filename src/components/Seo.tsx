@@ -34,7 +34,10 @@ function SEO({ description, tags, title, image }: Props) {
             <meta property="og:type" content="article" />
             {seo.keywords && <meta name="keywords" content={seo.keywords} />}
 
+            {/* google search console */}
             <meta name="google-site-verification" content="nPCEvVUtafq3NEt5n8kQ-fQvrQCDsyTQ3yKuCwuctWg" />
+            {/* naver search advisor */}
+            <meta name="naver-site-verification" content="28dba27af4a4826d0cd01d3a99b4c10f7b917477" />
         </Helmet>
     );
 }
