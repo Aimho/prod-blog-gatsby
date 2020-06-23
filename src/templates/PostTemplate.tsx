@@ -36,7 +36,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
                     </Typography>
                     <Typography variant="h1">{title}</Typography>
                     <TagContent tags={tags} />
-                    <Typography variant="body2">{description}</Typography>
+                    <Typography variant="body1">{description}</Typography>
 
                     <div dangerouslySetInnerHTML={{ __html: html }} />
 
