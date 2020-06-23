@@ -1,10 +1,25 @@
 import React from 'react';
+import { navigate } from 'gatsby';
 
-const NotFoundPage = () => (
-    <div>
-        <h1>NOT FOUND</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-    </div>
-);
+import { Button, Typography, Grid } from '@material-ui/core';
+import { ErrorRounded } from '@material-ui/icons';
 
-export default NotFoundPage;
+import Layout from '../components/Layout';
+
+const ErrorPage = () => {
+    return (
+        <Layout>
+            <Grid container alignItems="center" direction="column" style={{ padding: '60px 0' }}>
+                <ErrorRounded style={{ fontSize: '64px', color: 'rgb(229, 57, 53)' }} />
+                <Typography variant="h4" style={{ margin: '32px 0px' }} align="center">
+                    찾을 수 없는 페이지 입니다.
+                </Typography>
+                <Button size="large" onClick={() => navigate('/')} style={{ marginTop: '32px' }}>
+                    메인으로 돌아가기
+                </Button>
+            </Grid>
+        </Layout>
+    );
+};
+
+export default ErrorPage;
