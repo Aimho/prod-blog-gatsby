@@ -40,12 +40,12 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
 
                     <div dangerouslySetInnerHTML={{ __html: html }} />
 
-                    <Grid container justify="space-between">
+                    <DiscussionEmbed {...disqusConfig} />
+
+                    <Grid container justify="space-between" style={{ marginTop: '48px' }}>
                         <Grid item>{previousPost ? <NavPostBtn isNext={false} {...previousPost} /> : <></>}</Grid>
                         <Grid item>{nextPost ? <NavPostBtn isNext={true} {...nextPost} /> : <></>}</Grid>
                     </Grid>
-
-                    <DiscussionEmbed {...disqusConfig} />
                     <TagAside onFadeIn={() => setFadeIn(false)} />
                 </Container>
             </StyledPostContent>

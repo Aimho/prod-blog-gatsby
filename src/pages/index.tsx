@@ -41,7 +41,7 @@ const IndexPage: React.FC = () => {
                     return (
                         <StyledIndexContent key={id}>
                             <CardContent {...frontmatter} onClick={onClick} />
-                            <TagAside onFadeIn={() => setFadeIn(false)} />
+                            {index === 1 && <TagAside onFadeIn={() => setFadeIn(false)} />}
                         </StyledIndexContent>
                     );
                 })}

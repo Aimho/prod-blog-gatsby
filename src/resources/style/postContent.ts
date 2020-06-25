@@ -95,6 +95,10 @@ const StyledPostContent = styled.div`
             color: #2085ff;
         }
     }
+
+    hr {
+        margin-top: 60px;
+    }
 `;
 
 export default StyledPostContent;
