@@ -1,44 +1,83 @@
 ---
-createdAt: '2020-07-10'
-title: 코딩테스트 연습 - 완주하지 못한 선수
-description: '프로그래머스의 코딩테스트 연습 항목 중 해시 > 완주하지 못한 선수 문제를 풀어보았다.'
-tags: ['프로그래머스', '코딩테스트 연습', '완주하지 못한 선수', 'javascript', '해시']
+createdAt: '2020-07-11'
+title: 코딩테스트 연습 - 모의고사
+description: '프로그래머스의 코딩테스트 연습 항목 중 완전탐색 > 모의고사 문제를 풀어보았다.'
+tags: ['프로그래머스', '코딩테스트 연습', '모의고사', 'javascript', '완전탐색']
 ---
 
 ## 문제 설명 
 
-수많은 마라톤 선수들이 마라톤에 참여하였습니다. 단 한 명의 선수를 제외하고는 모든 선수가 마라톤을 완주하였습니다.
+수포자는 수학을 포기한 사람의 준말입니다. 수포자 삼인방은 모의고사에 수학 문제를 전부 찍으려 합니다. 수포자는 1번 문제부터 마지막 문제까지 다음과 같이 찍습니다.
 
-마라톤에 참여한 선수들의 이름이 담긴 배열 participant와 완주한 선수들의 이름이 담긴 배열 completion이 주어질 때, 완주하지 못한 선수의 이름을 return 하도록 solution 함수를 작성해주세요.
+1번 수포자가 찍는 방식: 1, 2, 3, 4, 5, 1, 2, 3, 4, 5, ...
+2번 수포자가 찍는 방식: 2, 1, 2, 3, 2, 4, 2, 5, 2, 1, 2, 3, 2, 4, 2, 5, ...
+3번 수포자가 찍는 방식: 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, 3, 3, 1, 1, 2, 2, 4, 4, 5, 5, ...
+
+1번 문제부터 마지막 문제까지의 정답이 순서대로 들은 배열 answers가 주어졌을 때, 가장 많은 문제를 맞힌 사람이 누구인지 배열에 담아 return 하도록 solution 함수를 작성해주세요.
 
 ## 제한사항
-- 마라톤 경기에 참여한 선수의 수는 1명 이상 100,000명 이하입니다.
-- completion의 길이는 participant의 길이보다 1 작습니다.
-- 참가자의 이름은 1개 이상 20개 이하의 알파벳 소문자로 이루어져 있습니다.
-- 참가자 중에는 동명이인이 있을 수 있습니다.
+- 시험은 최대 10,000 문제로 구성되어있습니다.
+- 문제의 정답은 1, 2, 3, 4, 5중 하나입니다.
+- 가장 높은 점수를 받은 사람이 여럿일 경우, return하는 값을 오름차순 정렬해주세요.
 
 ## 입출력 예
-- participant: [leo, kiki, eden]
-- completion: [eden, kiki]
-- return: leo
+| answers |	return |
+| `[1,2,3,4,5]` |	`[1]` |
+| `[1,3,2,4,2]` |	`[1,2,3]` |
 
 ## 문제 풀이
 
 ```javascript
-function solution(participant, completion) {
-    // 정렬
-    participant.sort();
-    completion.sort();
-    
-    // 값 비교
-    const answer = participant.filter((item, index) => item !== completion[index]);
-    
-    // 0번째 인자가 맞지 않는 값
-    return answer[0];
+function solution(answers) {
+    // 학생 정보 
+    const students = [
+        {
+            id: 1,
+            answer: [1,2,3,4,5],
+            success: 0
+        },
+        {
+            id: 2,
+            answer: [2,1,2,3,2,4,2,5],
+            success: 0
+        },
+        {
+            id: 3,
+            answer: [3,3,1,1,2,2,4,4,5,5],
+            success: 0
+        }
+    ];
+
+    // 문제 정답 확인
+    const result = students.map((student) => {
+        const success = answers.reduce((prev, next, index) => {
+            return next === student.answer[index % student.answer.length] ? 
+                prev + 1 : prev
+        }, 0)
+
+        return  {
+            ...student,
+            success: success
+        }
+    })
+
+    // 고득점 학생 정렬
+    result.sort((a, b) => b.success - a.success);
+
+    // 최고점수 확인
+    const resultSuccess = result.map(item => item.success);
+    const maxSuccess = Math.max(...resultSuccess)
+
+    // 최고점수 학생만 남김
+    const answer = result
+        .filter(item => item.success === maxSuccess)
+        .map(item => item.id);
+
+    return answer;
 }
 ```  
 
 ---
 
 ## 프로그래머스 링크
-<a href="https://programmers.co.kr/learn/courses/30/lessons/42576" target="_blank">코딩테스트 연습 > 해시 > 완주하지 못한 선수</a>
+<a href="https://programmers.co.kr/learn/courses/30/lessons/42840" target="_blank">코딩테스트 연습 > 완전탐색 > 모의고사</a>
