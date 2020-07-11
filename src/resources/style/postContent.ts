@@ -99,6 +99,22 @@ const StyledPostContent = styled.div`
     hr {
         margin-top: 60px;
     }
+
+    .tag-aside {
+        transform: translateX(calc(100% + 32px));
+    }
+
+    table {
+        text-align: center;
+        th {
+            padding: 8px 32px;
+            border-bottom: solid 1px #70b6ff;
+        }
+        td {
+            padding: 12px 32px;
+            border-bottom: dashed 1px #70b6ff;
+        }
+    }
 `;
 
 export default StyledPostContent;

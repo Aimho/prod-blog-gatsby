@@ -30,7 +30,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
             <SEO title={title} tags={tags && tags.join(', ')} />
 
             <StyledPostContent>
-                <Container maxWidth="md" style={{ marginTop: '60px' }}>
+                <Container maxWidth="md" style={{ marginTop: '60px', position: 'relative' }}>
                     <Typography className="date" variant="caption" component="p">
                         {createdAt}
                     </Typography>
@@ -46,7 +46,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
                         <Grid item>{previousPost ? <NavPostBtn isNext={false} {...previousPost} /> : <></>}</Grid>
                         <Grid item>{nextPost ? <NavPostBtn isNext={true} {...nextPost} /> : <></>}</Grid>
                     </Grid>
-                    <TagAside onFadeIn={() => setFadeIn(false)} />
+                    <TagAside className="tag-aside" onFadeIn={() => setFadeIn(false)} />
                 </Container>
             </StyledPostContent>
         </Layout>

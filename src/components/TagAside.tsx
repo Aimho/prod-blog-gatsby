@@ -11,6 +11,7 @@ import { isValidArray } from '../utils/checker';
 import setMobileCSS from '../utils/setMobileCSS';
 
 const StyledTag = styled.aside`
+    z-index: 1100;
     position: absolute;
     top: 0;
     right: 32px;
@@ -26,13 +27,14 @@ const StyledTag = styled.aside`
 `;
 
 interface Props {
+    className?: string;
     onFadeIn?: () => void;
 }
 
-const TagAside: React.FC<Props> = ({ onFadeIn }) => {
+const TagAside: React.FC<Props> = ({ onFadeIn, className }) => {
     const tags = staticQuery().getAllTags;
     return (
-        <StyledTag>
+        <StyledTag className={className}>
             <Grid container spacing={1} wrap="wrap" className="tags">
                 <Grid item xs={12}>
                     <Typography variant="subtitle1" color="primary">

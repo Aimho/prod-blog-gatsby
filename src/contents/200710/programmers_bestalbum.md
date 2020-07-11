@@ -21,9 +21,24 @@ tags: ['프로그래머스', '코딩테스트 연습', '모의고사', 'javascri
 - 가장 높은 점수를 받은 사람이 여럿일 경우, return하는 값을 오름차순 정렬해주세요.
 
 ## 입출력 예
-| answers |	return |
-| `[1,2,3,4,5]` |	`[1]` |
-| `[1,3,2,4,2]` |	`[1,2,3]` |
+<Table>
+  <thead>
+    <tr>
+      <th>answers</th>
+      <th>return</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>[1,2,3,4,5]</td>
+      <td>[1]</td>
+    </tr>
+    <tr>
+      <td>[1,3,2,4,2]</td>
+      <td>[1,2,3]</td>
+    </tr>
+  </tbody>
+</Table>
 
 ## 문제 풀이
 
