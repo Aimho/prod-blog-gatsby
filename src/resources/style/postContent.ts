@@ -106,6 +106,11 @@ const StyledPostContent = styled.div`
 
     table {
         text-align: center;
+        ${setMobileCSS(`
+          display: block;
+          max-width: 100%;
+          overflow-x: scroll;
+        `)}
         th {
             padding: 8px 32px;
             border-bottom: solid 1px #70b6ff;
