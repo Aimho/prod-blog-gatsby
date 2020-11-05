@@ -5,8 +5,6 @@ description: 'Codility 코딩테스트 문제 풀이 Lesson1 Iterations: BinaryG
 tags: ['Codility', '코딩테스트 연습', 'BinaryGap', 'Iterations', 'javascript']
 ---
 
-# BinaryGap
-
 ## 문제설명
 A binary gap within a positive integer N is any maximal sequence of consecutive zeros that is surrounded by ones at both ends in the binary representation of N.
 
