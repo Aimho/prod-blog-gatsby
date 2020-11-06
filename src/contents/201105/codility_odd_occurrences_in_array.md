@@ -1,8 +1,8 @@
 ---
 createdAt: '2020-11-05'
 title: OddOccurrencesInArray
-description: 'Codility 코딩테스트 문제 Lesson2 Arrays: OddOccurrencesInArray'
-tags: ['Codility', '코딩테스트 연습', 'OddOccurrencesInArray', 'Arrays', 'javascript']
+description: 'Codility Lesson2 Arrays: OddOccurrencesInArray'
+tags: ['Codility', 'OddOccurrencesInArray', 'Arrays', 'javascript']
 ---
 
 ## 문제설명

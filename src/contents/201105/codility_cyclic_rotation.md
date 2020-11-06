@@ -1,8 +1,8 @@
 ---
 createdAt: '2020-11-05'
 title: CyclicRotation
-description: 'Codility 코딩테스트 문제 Lesson2 Arrays: CyclicRotation'
-tags: ['Codility', '코딩테스트 연습', 'CyclicRotation', 'Arrays', 'javascript']
+description: 'Codility Lesson2 Arrays: CyclicRotation'
+tags: ['Codility', 'CyclicRotation', 'Arrays', 'javascript']
 ---
 
 ## 문제설명
