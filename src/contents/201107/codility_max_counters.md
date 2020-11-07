@@ -71,15 +71,14 @@ function solution(N, A) {
   let maxCount = 0;
   
   for (let arr of A) {
-    // max count 조건 flag
-    const isMaxCount = arr > N;
-    
-    if (isMaxCount) {
+    // max count 조건
+    if (arr > N) {
       // 초기화
       counts = Array(N).fill(maxCount);
     } else {
       // 값 교체
       counts[arr - 1]++;
+      // 최대값 갱신
       maxCount = maxCount < counts[arr - 1] ? counts[arr - 1] : maxCount;
     }
   }
