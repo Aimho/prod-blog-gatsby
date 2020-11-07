@@ -64,22 +64,30 @@ Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized cop
 performance test에서 `large_random1`, `large_random2`, `extreme_large` timeout error, total score 66%.
 
 ```javascript
-function solution(X, A) {
-    // 가장 큰 인덱스를 저장할 변수
-    let maxIndex = 0;
-    // 1부터 X 까지 반복
-    for (let i=1; i<(X+1); i++) {
-        // 찾는 값(i)의 인덱스를 반환
-        const index = A.indexOf(i);
-        // 반대편으로 건너지 못하는경우 (1부터 X까지 수가 배열에 없는 경우) -1 반환
-        if (index === -1) return -1;
-        
-        // index가 maxIndex보다 큰 경우 maxIndex 갱신
-        if (index > maxIndex) {
-            maxIndex = index;
-        }
+function solution(N, A) {
+  // Length N인 배열 생성
+  let counts = Array(N).fill(0);
+  
+  for (let arr of A) {
+    // max count 조건 flag
+    const isMaxCount = arr > N;
+    // 배열 index
+    const arrIndex = arr - 1;
+    
+    if (isMaxCount) {
+      // 최대값 
+      const max = Math.max(...counts);
+      // 초기화
+      counts = Array(N).fill(max);
+    } else {
+      // 해당 인덱스 값 1증가
+      const increase = counts[arrIndex] + 1;
+      // 갑 교체
+      counts.splice(arrIndex, 1, increase);
     }
-    return maxIndex;
+  }
+  
+  return counts
 }
 ```  
 
