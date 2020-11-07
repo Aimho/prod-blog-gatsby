@@ -61,29 +61,26 @@ Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 ## 문제풀이
 
-performance test에서 `large_random1`, `large_random2`, `extreme_large` timeout error, total score 66%.
+performance test에서 `large_random2`, `extreme_large` timeout error, total score 77%.
 
 ```javascript
 function solution(N, A) {
   // Length N인 배열 생성
   let counts = Array(N).fill(0);
+  // 최대값 저장할 변수
+  let maxCount = 0;
   
   for (let arr of A) {
     // max count 조건 flag
     const isMaxCount = arr > N;
-    // 배열 index
-    const arrIndex = arr - 1;
     
     if (isMaxCount) {
-      // 최대값 
-      const max = Math.max(...counts);
       // 초기화
-      counts = Array(N).fill(max);
+      counts = Array(N).fill(maxCount);
     } else {
-      // 해당 인덱스 값 1증가
-      const increase = counts[arrIndex] + 1;
-      // 갑 교체
-      counts.splice(arrIndex, 1, increase);
+      // 값 교체
+      counts[arr - 1]++;
+      maxCount = maxCount < counts[arr - 1] ? counts[arr - 1] : maxCount;
     }
   }
   
