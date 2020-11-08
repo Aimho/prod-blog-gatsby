@@ -1,5 +1,5 @@
 ---
-createdAt: '2020-11-07'
+createdAt: '2020-11-08'
 title: Codility 문제풀이 - MissingInteger
 description: 'Codility Lesson4 Counting Elements: MissingInteger'
 tags: ['Codility', 'MissingInteger', 'Counting Elements', 'javascript']
