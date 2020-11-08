@@ -1,6 +1,6 @@
 ---
 createdAt: '2020-11-07'
-title: MaxCounters
+title: Codility 문제풀이 - MaxCounters
 description: 'Codility Lesson4 Counting Elements: MaxCounters'
 tags: ['Codility', 'MaxCounters', 'Counting Elements', 'javascript']
 ---
@@ -61,7 +61,7 @@ Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 ## 문제풀이
 
-performance test에서 `large_random2`, `extreme_large` timeout error, total score 77%.
+performance test `large_random2`, `extreme_large` timeout error, total score 77%.
 
 ```javascript
 function solution(N, A) {

@@ -1,6 +1,6 @@
 ---
 createdAt: '2020-11-06'
-title: TapeEquilibrium
+title: Codility 문제풀이 - TapeEquilibrium
 description: 'Codility Lesson3 Time Complexity: TapeEquilibrium'
 tags: ['Codility', 'TapeEquilibrium', 'Time Complexity', 'javascript']
 ---

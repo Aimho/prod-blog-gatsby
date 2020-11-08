@@ -1,7 +1,7 @@
 ---
 createdAt: '2020-11-06'
-title: FrogJmp
-description: 'Codility 코딩테스트 문제 Lesson3 Time Complexity: FrogJmp'
+title: Codility 문제풀이 - FrogJmp
+description: 'Codility Lesson3 Time Complexity: FrogJmp'
 tags: ['Codility', '코딩테스트 연습', 'FrogJmp', 'Time Complexity', 'javascript']
 ---
 

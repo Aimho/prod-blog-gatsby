@@ -1,6 +1,6 @@
 ---
 createdAt: '2020-11-05'
-title: OddOccurrencesInArray
+title: Codility 문제풀이 - OddOccurrencesInArray
 description: 'Codility Lesson2 Arrays: OddOccurrencesInArray'
 tags: ['Codility', 'OddOccurrencesInArray', 'Arrays', 'javascript']
 ---

@@ -1,6 +1,6 @@
 ---
 createdAt: '2020-11-06'
-title: PermMissingElem
+title: Codility 문제풀이 - PermMissingElem
 description: 'Codility Lesson3 Time Complexity: PermMissingElem'
 tags: ['Codility', 'PermMissingElem', 'Time Complexity', 'javascript']
 ---

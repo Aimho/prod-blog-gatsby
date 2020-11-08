@@ -1,6 +1,6 @@
 ---
 createdAt: '2020-07-19'
-title: 코딩테스트 연습 - H-Index
+title: 프로그래머스 문제풀이 - H-Index
 description: '프로그래머스의 코딩테스트 연습 항목 중 정렬 > H-Index 문제를 풀어보았다.'
 tags: ['프로그래머스', '코딩테스트 연습', 'H-Index', 'javascript', '정렬']
 ---

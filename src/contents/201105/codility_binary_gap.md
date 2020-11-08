@@ -1,7 +1,7 @@
 ---
 createdAt: '2020-11-05'
-title: BinaryGap
-description: 'Codility 풀이 Lesson1 Iterations: BinaryGap'
+title: Codility 문제풀이 - BinaryGap
+description: 'Codility Lesson1 Iterations: BinaryGap'
 tags: ['Codility', 'BinaryGap', 'Iterations', 'javascript']
 ---
 

@@ -1,6 +1,6 @@
 ---
 createdAt: '2020-11-05'
-title: CyclicRotation
+title: Codility 문제풀이 - CyclicRotation
 description: 'Codility Lesson2 Arrays: CyclicRotation'
 tags: ['Codility', 'CyclicRotation', 'Arrays', 'javascript']
 ---
