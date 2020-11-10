@@ -33,6 +33,9 @@ X ≤ Y.
 Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
 ## 문제풀이
+
+**total score 100%**
+
 ```javascript
 function solution(X, Y, D) {
   // Y와 X의 차이 값

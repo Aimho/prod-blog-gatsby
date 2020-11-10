@@ -61,7 +61,9 @@ Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 ## 문제풀이
 
-performance test `large_random2`, `extreme_large` timeout error, total score 77%.
+**total score 77%**
+
+performance test `large_random2`, `extreme_large` timeout error.
 
 ```javascript
 function solution(N, A) {

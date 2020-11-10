@@ -38,6 +38,9 @@ all but one of the values in A occur an even number of times.
 Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
 ## 문제풀이
+
+**total score 100%**
+
 ```javascript
 function solution(A) {
   // A 정렬 

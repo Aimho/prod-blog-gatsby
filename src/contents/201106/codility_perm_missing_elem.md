@@ -32,6 +32,9 @@ each element of array A is an integer within the range [1..(N + 1)].
 Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
 ## 문제풀이
+
+**total score 100%**
+
 ```javascript
 function solution(A) {
   // 빈 배열의 경우 1 반환

@@ -48,7 +48,9 @@ Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized cop
 
 문제 설명이 복잡하게 되어 있는데, S문자열의 인덱스가 P[N]이상, Q[N]이하 인 항목 에서 가장 작은 문자의 값을 찾으면 되는 문제이다.
 
-performance `almost_all_same_letters`, `large_random`, `extreme_large` 항목 timeout error, total score 62%.
+**total score 62%**
+
+performance `almost_all_same_letters`, `large_random`, `extreme_large` timeout error.
 
 ```javascript
 function solution(S, P, Q) {

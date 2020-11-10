@@ -46,6 +46,9 @@ In your solution, focus on correctness. The performance of your solution will no
 Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
 ## 문제풀이
+
+**total score 100%**
+
 ```javascript
 function solution(A, K) {
   // K를 A로 나눈 나머지 만큼 이동

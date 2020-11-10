@@ -24,6 +24,9 @@ N is an integer within the range [1..2,147,483,647].
 Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
 ## 문제풀이
+
+**total score 100%**
+
 ```javascript
 function solution(N) {
   // 2진수로 변경

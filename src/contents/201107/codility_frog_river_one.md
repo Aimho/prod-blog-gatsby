@@ -53,7 +53,9 @@ Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized cop
 ## 문제풀이
 문제 설명이 복잡하게 되어 있는데, 그냥 배열안의 요소가 1부터 X까지 중복되는 수 없이 있는지 확인하고, 배열의 몇 번째 인덱스에서 확인이 끝난 것인지를 반환하면 된다.
 
-performance test `large_permutation`, `large_range` timeout error, total score 81%.
+**total score 81%**
+
+performance test `large_permutation`, `large_range` timeout error.
 
 ```javascript
 function solution(X, A) {

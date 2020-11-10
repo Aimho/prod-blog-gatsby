@@ -49,6 +49,9 @@ each element of array A is an integer within the range [−1,000..1,000].
 Copyright 2009–2020 by Codility Limited. All Rights Reserved. Unauthorized copying, publication or disclosure prohibited.
 
 ## 문제풀이
+
+**total score 100%**
+
 ```javascript
 function solution(A) {
   // length 1 인 경우 첫 번째 요소 반환
