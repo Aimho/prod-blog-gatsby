@@ -35,7 +35,7 @@ function solution(A) {
   // A 배열에서 0이상이고, 겹치지는 값을 제외한 값들만 남김
   const uniqueA = [...new Set(A.filter((item => item > 0)))];
 
-  // uniqueA의 길이 만큼 순회
+  // uniqueA 길이 + 1 만큼 순회
   for (let i = 1; i <= uniqueA.length + 1; i++) {
     // 포함하지 않는 값이 있으면 반환
     if (!uniqueA.includes(i)) return i;
