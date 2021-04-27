@@ -25,7 +25,7 @@ module.exports = {
       resolve: `gatsby-plugin-manifest`,
       options: {
         start_url: `/`,
-        icon: `src/resources/images/favicon.ico` // This path is relative to the root of the site.
+        icon: `src/resources/images/favicon.svg` // This path is relative to the root of the site.
       }
     },
     {

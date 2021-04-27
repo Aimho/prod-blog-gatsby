@@ -11,24 +11,31 @@ import {
   useTheme,
   useMediaQuery
 } from "@material-ui/core";
-import { Search } from "@material-ui/icons";
+import { Home, Search } from "@material-ui/icons";
 
 import { LogoImg } from "./style";
 
 const Header = () => {
   const theme = useTheme();
   const matchXS = useMediaQuery(theme.breakpoints.down("xs"));
-  const { register, handleSubmit } = useForm<{ search: string }>();
+  const { register, handleSubmit, setValue } = useForm<{ search: string }>();
 
   const onSubmit = ({ search }) => {
     if (!search) return;
+    setValue("search", "");
     navigate(`/?search=${search}`);
   };
 
   const Logo = () => {
     const onClickHome = () => navigate("/");
 
-    if (matchXS) return null;
+    if (matchXS) {
+      return (
+        <IconButton onClick={onClickHome}>
+          <Home />
+        </IconButton>
+      );
+    }
     return (
       <LogoImg
         alt="AimHo Blog"
@@ -65,11 +72,16 @@ const Header = () => {
         container
         component="form"
         alignItems="center"
+        justify="space-between"
         onSubmit={handleSubmit(onSubmit)}
         style={{ padding: "16px 0px" }}
       >
-        <Logo />
-        <SearchBar />
+        <Grid xs={2} sm="auto" item>
+          <Logo />
+        </Grid>
+        <Grid xs={10} sm="auto" item>
+          <SearchBar />
+        </Grid>
       </Grid>
     </Container>
   );

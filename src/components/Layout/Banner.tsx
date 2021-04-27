@@ -1,12 +1,12 @@
 import React from "react";
+import { navigate } from "gatsby";
 import Lottie from "react-lottie";
-import queryString from "query-string";
 
 import { Chip, Container, Grid, IconButton } from "@material-ui/core";
 import { LocalOffer } from "@material-ui/icons";
 
 import LAim from "../../resources/lottie/aim.json";
-import { getTagList } from "../../query/home";
+import getStaticQuery from "../../utils/getStaticQuery";
 import {
   BannerContainer,
   BannerContentContainer,
@@ -17,9 +17,10 @@ import {
 
 export interface Props {
   title?: string;
+  search?: string;
 }
 
-const Banner = ({ title }: Props) => {
+const Banner = ({ title, search }: Props) => {
   const lottieOptions = {
     loop: true,
     autoplay: true,
@@ -27,22 +28,27 @@ const Banner = ({ title }: Props) => {
   };
 
   const BannerContent = () => {
-    const { search } = queryString.parse(window.location.search);
-    if (search) return <BannerTitle>Search / {search}</BannerTitle>;
     if (title) return <BannerTitle>{title}</BannerTitle>;
 
-    const tagList = getTagList();
-    if (tagList.length === 0) return <BannerTitle>Blog</BannerTitle>;
-
+    const { tagList } = getStaticQuery();
     const bestTagList = tagList
       .sort((prev, next) => next.totalCount - prev.totalCount)
       .slice(0, 10);
 
+    const onClick = (value: string) => navigate(`/?tag=${value}`);
+
     return (
       <BannerContentContainer container spacing={1}>
-        {bestTagList.map(({ tag }, index) => (
+        <Grid item xs={12}>
+          <BannerTitle>{search}</BannerTitle>
+        </Grid>
+        {bestTagList.map((item, index) => (
           <Grid item key={index}>
-            <Chip label={`#${tag}`} color="secondary" />
+            <Chip
+              label={`#${item.tag}`}
+              color="secondary"
+              onClick={() => onClick(item.tag)}
+            />
           </Grid>
         ))}
         <Grid item>

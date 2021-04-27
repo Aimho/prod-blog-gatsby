@@ -6,7 +6,7 @@ import { Typography, Grid, Chip } from "@material-ui/core";
 import { LocalOffer } from "@material-ui/icons";
 
 import lodash from "lodash";
-import staticQuery from "../utils/staticQuery";
+import getStaticQuery from "../utils/getStaticQuery";
 import { isValidArray } from "../utils/checker";
 import setMobileCSS from "../utils/setMobileCSS";
 
@@ -32,7 +32,7 @@ interface Props {
 }
 
 const TagAside: React.FC<Props> = ({ onFadeIn, className }) => {
-  const tags = staticQuery().getAllTags;
+  const { tagList: tags } = getStaticQuery();
   return (
     <StyledTag className={className}>
       <Grid container spacing={1} wrap="wrap" className="tags">
