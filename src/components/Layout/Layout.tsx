@@ -1,5 +1,5 @@
 import React, { Suspense } from "react";
-import { Container } from "@material-ui/core";
+import { Container, Fade } from "@material-ui/core";
 
 import ThemeProvider from "../../styles/ThemeProvider";
 import LoadingPanel from "../LoadingPanel";
@@ -11,14 +11,11 @@ const Layout: React.FC<Props> = props => (
     <ThemeProvider>
       <Header />
       <Banner {...props} />
-      <Container
-        maxWidth="md"
-        component="main"
-        style={{ marginTop: 40 }}
-        disableGutters
-      >
-        {props.children}
-      </Container>
+      <Fade in>
+        <Container maxWidth="md" component="main" disableGutters>
+          {props.children}
+        </Container>
+      </Fade>
     </ThemeProvider>
   </Suspense>
 );

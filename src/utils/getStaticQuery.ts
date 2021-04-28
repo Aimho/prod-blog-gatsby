@@ -10,6 +10,7 @@ export interface IPost {
   slug: string;
   body: string;
   title: string;
+  description: string;
   tags: string[];
   createdAt: string;
 }
@@ -38,12 +39,13 @@ const getStaticQuery: TGetStaticQuery = () => {
       ) {
         postList: nodes {
           id
+          rawMarkdownBody
           frontmatter {
             tags
             title
+            description
             createdAt(formatString: "YYYY년 M월 D일")
           }
-          rawMarkdownBody
           fields {
             slug
           }

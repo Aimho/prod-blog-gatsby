@@ -9,16 +9,8 @@ export const LogoImg = styled.img`
 
 export const BannerContainer = styled(Paper)`
   overflow: hidden;
-`;
-
-export const MuiGridContainer = styled(Grid)`
   padding: 32px 0;
-  min-height: 264px;
-  ${({ theme }) => css`
-    ${theme.breakpoints.down("xs")} {
-      min-height: 132px;
-    }
-  `}
+  position: relative;
 `;
 
 export const BannerContentContainer = styled(Grid)`
@@ -35,7 +27,7 @@ export const BannerTitle = styled.h1`
   margin-bottom: 12px;
   ${({ theme }) => css`
     ${theme.breakpoints.down("xs")} {
-      font-size: 32px;
+      font-size: 28px;
     }
   `}
 `;
@@ -43,12 +35,15 @@ export const BannerTitle = styled.h1`
 export const LottieContainer = styled.span`
   right: 100%;
   position: absolute;
+  top: 0;
+  right: 100px;
   ${({ theme }) => css`
     z-index: ${theme.zIndex.mobileStepper};
-    ${theme.breakpoints.down("sm")} {
+    ${theme.breakpoints.down("md")} {
       right: 0;
     }
     ${theme.breakpoints.down("xs")} {
+      top: auto;
       right: -100px;
       bottom: -100px;
     }

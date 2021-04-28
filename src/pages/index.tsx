@@ -5,7 +5,6 @@ import SEO from "../components/Seo";
 import Layout from "../components/Layout";
 import PostList from "../components/PostList";
 import getStaticQuery from "../utils/getStaticQuery";
-import { List } from "@material-ui/core";
 
 interface queryProps {
   tag?: string;
@@ -13,14 +12,20 @@ interface queryProps {
 }
 
 const IndexPage: React.FC = () => {
-  const { postList } = getStaticQuery();
+  const { postList, tagList } = getStaticQuery();
   const [list, setList] = useState(postList);
+
   const { search, tag }: queryProps = queryString.parse(window.location.search);
 
-  const searchStr = () => {
+  const bestTagList = tagList
+    .sort((prev, next) => next.totalCount - prev.totalCount)
+    .slice(0, 10)
+    .map(item => item.tag);
+
+  const title = () => {
     if (search) return `Search / ${search}`;
     if (tag) return `Tag / ${tag}`;
-    return undefined;
+    return "Blog";
   };
 
   useEffect(() => {
@@ -36,7 +41,7 @@ const IndexPage: React.FC = () => {
   }, [search, tag]);
 
   return (
-    <Layout search={searchStr()}>
+    <Layout title={title()} tagList={bestTagList}>
       <SEO title="Home" />
       <PostList list={list} />
     </Layout>

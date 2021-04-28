@@ -34,7 +34,7 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
   };
 
   return (
-    <Layout title={title}>
+    <Layout title={title} tagList={tags}>
       <SEO title={title} tags={tags && tags.join(", ")} />
 
       <StyledPostContent>
@@ -45,8 +45,6 @@ const PostTemplate: React.FC<PostTemplateProps> = React.memo(props => {
           <Typography className="date" variant="caption" component="p">
             {createdAt}
           </Typography>
-          <Typography variant="h1">{title}</Typography>
-          <TagContent tags={tags} />
           <Typography variant="body1">{description}</Typography>
 
           <div dangerouslySetInnerHTML={{ __html: html }} />

@@ -1,19 +1,19 @@
 import React from "react";
-import { List } from "@material-ui/core";
 
 import { IPost } from "../../utils/getStaticQuery";
 import PostItem from "./PostItem";
+import { MuiList } from "./style";
 
 interface Props {
   list: IPost[];
 }
 
 const PostList = ({ list }: Props) => (
-  <List>
+  <MuiList>
     {list.map(item => (
       <PostItem {...item} onClick={() => console.log(item.id)} key={item.id} />
     ))}
-  </List>
+  </MuiList>
 );
 
 export default PostList;

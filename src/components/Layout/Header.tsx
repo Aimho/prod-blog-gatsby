@@ -11,7 +11,7 @@ import {
   useTheme,
   useMediaQuery
 } from "@material-ui/core";
-import { Home, Search } from "@material-ui/icons";
+import { Home, Search, LocalOffer } from "@material-ui/icons";
 
 import { LogoImg } from "./style";
 
@@ -66,21 +66,31 @@ const Header = () => {
     />
   );
 
+  const TagButton = () => {
+    return (
+      <IconButton>
+        <LocalOffer />
+      </IconButton>
+    );
+  };
+
   return (
     <Container maxWidth="lg" component="header">
       <Grid
         container
         component="form"
         alignItems="center"
-        justify="space-between"
         onSubmit={handleSubmit(onSubmit)}
         style={{ padding: "16px 0px" }}
       >
-        <Grid xs={2} sm="auto" item>
+        <Grid xs={2} sm="auto" item style={{ marginRight: "auto" }}>
           <Logo />
         </Grid>
-        <Grid xs={10} sm="auto" item>
+        <Grid xs={8} sm="auto" item>
           <SearchBar />
+        </Grid>
+        <Grid xs={2} sm="auto" item>
+          <TagButton />
         </Grid>
       </Grid>
     </Container>
